@@ -1,1 +1,6 @@
 print ("Hello curious")
+print ("This is an example of a python file")
+print("Just for initial commit")
+print("This is the first file in the repository")
+print("Just acess the webpage to see the file")
+print("https://labombo.rf.gd")
