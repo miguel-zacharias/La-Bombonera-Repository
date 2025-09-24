@@ -18,6 +18,7 @@
             animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
+            cursor: none !important;
         }
 
         @keyframes gradientShift {
@@ -51,47 +52,67 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
+            width: auto;
             max-width: 800px;
-            padding: 15px 30px;
+            padding: 12px 52px;
             z-index: 1000;
+            background: rgba(0, 0, 0, 0.02);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(35px) saturate(200%);
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
 
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 30px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
         .logo::before {
-            content: "🍯";
-            font-size: 1.8rem;
+            content: "◈";
+            font-size: 1.3rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 16px;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
             position: relative;
             overflow: hidden;
         }
@@ -123,7 +144,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 20px;
             position: relative;
         }
 
@@ -286,6 +307,9 @@
             transform: translateY(50px);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            border-radius: 20px;
         }
 
         .card.visible {
@@ -293,17 +317,67 @@
             transform: translateY(0);
         }
 
-        .card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        /* Efeito de luz que segue o mouse - mecânica do Conectividade Total */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                500px circle at var(--mouse-x, 0%) var(--mouse-y, 0%), 
+                rgba(255, 255, 255, 0.08) 0%, 
+                rgba(255, 255, 255, 0.04) 30%,
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .card:hover .card-icon {
-            transform: scale(1.2) !important;
-            filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.3)) brightness(1.2) !important;
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                300px circle at var(--mouse-x, 0%) var(--mouse-y, 0%), 
+                rgba(255, 255, 255, 0.5) 0%, 
+                rgba(255, 255, 255, 0.3) 15%,
+                rgba(255, 255, 255, 0.15) 30%,
+                transparent 60%
+            );
+            opacity: 0;
+            transition: opacity 0.1s ease;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: overlay;
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.04);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.15);
         }
 
         .card-icon {
@@ -311,166 +385,31 @@
             margin-bottom: 20px;
             display: inline-block;
             transition: all 0.4s ease;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 300;
         }
 
-        /* Animações específicas para cada ícone */
-        .card:nth-child(1) .card-icon {
-            animation: signal 2s ease-in-out infinite;
+        /* Animações sutis apenas no hover */
+        .card:hover .card-icon {
+            animation: gentle-pulse 2s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .card:nth-child(2) .card-icon {
-            animation: electric 1.5s ease-in-out infinite;
-        }
-
-        .card:nth-child(3) .card-icon {
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        /* Animações dos projetos */
-        #projetos .card:nth-child(1) .card-icon {
-            animation: temperature 2.5s ease-in-out infinite;
-        }
-
-        #projetos .card:nth-child(2) .card-icon {
-            animation: house-glow 2s ease-in-out infinite;
-        }
-
-        #projetos .card:nth-child(3) .card-icon {
-            animation: rainbow 3s linear infinite;
-        }
-
-        #projetos .card:nth-child(4) .card-icon {
-            animation: weather 2.5s ease-in-out infinite;
-        }
-
-        /* Keyframes das animações */
-        @keyframes signal {
+        @keyframes gentle-pulse {
             0%, 100% { 
-                transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            }
-            25% { 
-                transform: scale(1.1) rotate(-2deg);
-                filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.5));
-            }
-            50% { 
-                transform: scale(1.15) rotate(0deg);
-                filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.7));
-            }
-            75% { 
-                transform: scale(1.1) rotate(2deg);
-                filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.5));
-            }
-        }
-
-        @keyframes electric {
-            0%, 100% { 
-                transform: scale(1);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1);
-            }
-            20% { 
-                transform: scale(1.05);
-                filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.6)) brightness(1.2);
-            }
-            40% { 
-                transform: scale(1.1);
-                filter: drop-shadow(0 8px 16px rgba(255, 215, 0, 0.8)) brightness(1.4);
-            }
-            60% { 
                 transform: scale(1.15);
-                filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 1)) brightness(1.6);
-            }
-            80% { 
-                transform: scale(1.05);
-                filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.6)) brightness(1.2);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% { 
-                transform: translateY(0) scale(1);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            }
-            25% { 
-                transform: translateY(-8px) scale(1.05);
-                filter: drop-shadow(0 12px 24px rgba(16, 185, 129, 0.4));
+                filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.2)) brightness(1.3);
             }
             50% { 
-                transform: translateY(-15px) scale(1.1);
-                filter: drop-shadow(0 20px 40px rgba(16, 185, 129, 0.6));
-            }
-            75% { 
-                transform: translateY(-8px) scale(1.05);
-                filter: drop-shadow(0 12px 24px rgba(16, 185, 129, 0.4));
-            }
-        }
-
-        @keyframes temperature {
-            0%, 100% { 
-                transform: scale(1);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) hue-rotate(0deg);
-            }
-            33% { 
-                transform: scale(1.08);
-                filter: drop-shadow(0 6px 12px rgba(239, 68, 68, 0.5)) hue-rotate(30deg);
-            }
-            66% { 
-                transform: scale(1.12);
-                filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.5)) hue-rotate(60deg);
-            }
-        }
-
-        @keyframes house-glow {
-            0%, 100% { 
-                transform: scale(1);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1);
-            }
-            50% { 
-                transform: scale(1.1);
-                filter: drop-shadow(0 8px 16px rgba(34, 197, 94, 0.7)) brightness(1.3);
-            }
-        }
-
-        @keyframes rainbow {
-            0% { 
-                transform: scale(1);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) hue-rotate(0deg) brightness(1);
-            }
-            25% { 
-                transform: scale(1.05);
-                filter: drop-shadow(0 6px 12px rgba(255, 0, 128, 0.6)) hue-rotate(90deg) brightness(1.2);
-            }
-            50% { 
-                transform: scale(1.1);
-                filter: drop-shadow(0 8px 16px rgba(0, 255, 128, 0.6)) hue-rotate(180deg) brightness(1.4);
-            }
-            75% { 
-                transform: scale(1.05);
-                filter: drop-shadow(0 6px 12px rgba(128, 0, 255, 0.6)) hue-rotate(270deg) brightness(1.2);
-            }
-            100% { 
-                transform: scale(1);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) hue-rotate(360deg) brightness(1);
-            }
-        }
-
-        @keyframes weather {
-            0%, 100% { 
-                transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            }
-            25% { 
-                transform: scale(1.05) rotate(-3deg);
-                filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.4));
-            }
-            50% { 
-                transform: scale(1.1) rotate(0deg);
-                filter: drop-shadow(0 8px 16px rgba(156, 163, 175, 0.6));
-            }
-            75% { 
-                transform: scale(1.05) rotate(3deg);
-                filter: drop-shadow(0 6px 12px rgba(59, 130, 246, 0.4));
+                transform: scale(1.2);
+                filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.3)) brightness(1.4);
             }
         }
 
@@ -498,36 +437,39 @@
             color: rgba(255, 255, 255, 0.95);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.8) 50%, 
-                transparent 100%);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-            border-radius: 2px;
-        }
 
-        .card:hover::before {
-            transform: scaleX(1);
-            animation: shimmer 1.5s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -100% 0; }
-            100% { background-position: 100% 0; }
-        }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .navbar {
+                top: 15px;
+                max-width: 85%;
+                padding: 6px 16px;
+            }
+            
+            .nav-content {
+                gap: 16px;
+            }
+            
             .nav-links {
-                display: none;
+                gap: 12px;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 3px 10px;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo::before {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 20px;
             }
 
             .hero h1 {
@@ -544,6 +486,11 @@
 
             .cards-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 30px 20px;
             }
         }
 
@@ -566,6 +513,49 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.3);
         }
+
+        /* Mouse Trails */
+        .mouse-trail {
+            position: fixed;
+            width: 14px;
+            height: 14px;
+            background: #111;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            transition: opacity 0.2s ease-out;
+        }
+
+        .mouse-trail.trail-1 {
+            opacity: 0.45;
+        }
+        .mouse-trail.trail-2 {
+            opacity: 0.4;
+        }
+        .mouse-trail.trail-3 {
+            opacity: 0.35;
+        }
+        .mouse-trail.trail-4 {
+            opacity: 0.3;
+        }
+
+        .cursor-ball {
+            position: fixed;
+            width: 16px;
+            height: 16px;
+            background: #111;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: background 0.2s, border 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -575,7 +565,7 @@
     <div class="floating-element"></div>
 
     <!-- Navigation -->
-    <nav class="navbar glass">
+    <nav class="navbar">
         <div class="nav-content">
             <a href="#" class="logo">La Bombonera</a>
             <ul class="nav-links">
@@ -601,17 +591,17 @@
         <h2 class="section-title">Por que escolher o Pico 2W?</h2>
         <div class="cards-grid">
             <div class="card glass">
-                <div class="card-icon">📡</div>
+                <div class="card-icon">◐</div>
                 <h3>Conectividade Total</h3>
                 <p>WiFi 802.11 b/g/n e Bluetooth 5.2 integrados para projetos IoT avançados</p>
             </div>
             <div class="card glass">
-                <div class="card-icon">⚡</div>
+                <div class="card-icon">◆</div>
                 <h3>Alto Performance</h3>
                 <p>Dual-core ARM Cortex M0+ a 133MHz com 264KB RAM e 2MB Flash</p>
             </div>
             <div class="card glass">
-                <div class="card-icon">💻</div>
+                <div class="card-icon">◯</div>
                 <h3>Fácil Programação</h3>
                 <p>Suporte completo para MicroPython, CircuitPython e C/C++</p>
             </div>
@@ -623,22 +613,22 @@
         <h2 class="section-title">Projetos em Destaque</h2>
         <div class="cards-grid">
             <div class="card glass">
-                <div class="card-icon">🌡️</div>
+                <div class="card-icon">◈</div>
                 <h3>Monitor IoT</h3>
                 <p>Sistema de monitoramento de temperatura, umidade e luminosidade em tempo real</p>
             </div>
             <div class="card glass">
-                <div class="card-icon">🏠</div>
+                <div class="card-icon">◆</div>
                 <h3>Casa Inteligente</h3>
                 <p>Automação residencial completa com controle de luzes e dispositivos</p>
             </div>
             <div class="card glass">
-                <div class="card-icon">🌈</div>
+                <div class="card-icon">◉</div>
                 <h3>LED Controller</h3>
                 <p>Controlador de LED RGB via web com efeitos personalizados</p>
             </div>
             <div class="card glass">
-                <div class="card-icon">🌦️</div>
+                <div class="card-icon">◎</div>
                 <h3>Estação Meteorológica</h3>
                 <p>Weather station inteligente com dados enviados para a nuvem</p>
             </div>
@@ -650,7 +640,8 @@
         <h2 class="section-title">Junte-se à Comunidade</h2>
         <div style="text-align: center;">
             <div class="card glass" style="max-width: 600px; margin: 0 auto;">
-                <div class="card-icon">🚀</div>
+                <div class="card-shimmer"></div>
+                <div class="card-icon">◈</div>
                 <h3>La Bombonera Community</h3>
                 <p>Conecte-se com outros makers, compartilhe projetos e aprenda com nossa comunidade vibrante!</p>
                 <br>
@@ -711,34 +702,55 @@
         // Navbar background on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.6)';
-                navbar.style.backdropFilter = 'blur(30px)';
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.05)';
-                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.classList.remove('scrolled');
             }
         });
 
-        // Mouse move effect for cards
+        // Efeito de seguir o mouse nos cards - mecânica exata do Conectividade Total
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
+                // Posição exata do mouse em pixels
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                
+                // Efeito de inclinação com maior sensibilidade
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+                card.style.transform = `
+                    perspective(1000px) 
+                    rotateX(${rotateX}deg) 
+                    rotateY(${rotateY}deg) 
+                    translateY(-12px) 
+                    scale(1.04)
+                `;
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                // Iniciar o efeito com transição mais rápida
+                card.style.transition = 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
             
             card.addEventListener('mouseleave', () => {
+                // Reset suave da posição
+                card.style.setProperty('--mouse-x', '0px');
+                card.style.setProperty('--mouse-y', '0px');
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
+            
+            // Inicializar variáveis CSS
+            card.style.setProperty('--mouse-x', '0px');
+            card.style.setProperty('--mouse-y', '0px');
         });
 
         // Add stagger animation to cards
@@ -747,30 +759,66 @@
             card.style.transitionDelay = `${index * 0.1}s`;
         });
 
-        // Interactive cursor effect
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor') || createCursor();
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+        // Mouse Trails System - Multiple trails at ~50 FPS each
+        class MouseTrails {
+            constructor() {
+                this.trails = [];
+                this.mouseX = 0;
+                this.mouseY = 0;
+                    this.trailCount = 5;
+                this.init();
+            }
 
-        function createCursor() {
-            const cursor = document.createElement('div');
-            cursor.className = 'cursor';
-            cursor.style.cssText = `
-                position: fixed;
-                width: 20px;
-                height: 20px;
-                background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9999;
-                transition: all 0.1s ease;
-                backdrop-filter: blur(5px);
-            `;
-            document.body.appendChild(cursor);
-            return cursor;
+            init() {
+                // Create trail elements
+                for (let i = 0; i < this.trailCount; i++) {
+                    const trail = document.createElement('div');
+                    trail.className = `mouse-trail trail-${(i % 4) + 1}`;
+                    document.body.appendChild(trail);
+                    
+                    this.trails.push({
+                        element: trail,
+                        x: 0,
+                        y: 0,
+                        delay: i * 20, // 20ms delay between trails (~50 FPS)
+                        lastUpdate: 0
+                    });
+                }
+
+                // Mouse move listener
+                document.addEventListener('mousemove', (e) => {
+                    this.mouseX = e.clientX;
+                    this.mouseY = e.clientY;
+                });
+
+                // Start animation loop
+                this.animate();
+            }
+
+            animate() {
+                const currentTime = Date.now();
+                
+                this.trails.forEach((trail, index) => {
+                    // Update each trail at ~50 FPS (20ms intervals)
+                    if (currentTime - trail.lastUpdate > trail.delay) {
+                        // Smooth interpolation to mouse position with higher responsiveness
+                        const speed = 0.15 + (index * 0.015); // Faster varying speeds
+                        trail.x += (this.mouseX - trail.x) * speed;
+                        trail.y += (this.mouseY - trail.y) * speed;
+                        
+                        trail.element.style.left = trail.x + 'px';
+                        trail.element.style.top = trail.y + 'px';
+                        
+                        trail.lastUpdate = currentTime;
+                    }
+                });
+
+                requestAnimationFrame(() => this.animate());
+            }
         }
+
+        // Initialize mouse trails
+        const mouseTrails = new MouseTrails();
 
         // Page load animation
         window.addEventListener('load', () => {
@@ -820,6 +868,18 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Adiciona a bola do cursor
+        if (!document.querySelector('.cursor-ball')) {
+            const cursorBall = document.createElement('div');
+            cursorBall.className = 'cursor-ball';
+            document.body.appendChild(cursorBall);
+
+            window.addEventListener('mousemove', (e) => {
+                cursorBall.style.left = e.clientX + 'px';
+                cursorBall.style.top = e.clientY + 'px';
+            });
+        }
     </script>
 </body>
 </html>
