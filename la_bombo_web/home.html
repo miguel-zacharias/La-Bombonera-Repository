@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none !important;
         }
 
         body {
@@ -22,9 +24,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Liquid Glass Effect */
@@ -34,19 +44,12 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .glass-dark {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Navigation */
+        /* Navigation - CORRIGIDO */
         .navbar {
             position: fixed;
             top: 20px;
@@ -54,87 +57,108 @@
             transform: translateX(-50%);
             width: auto;
             max-width: 800px;
-            padding: 12px 52px;
+            padding: 15px 40px;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.02);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
 
         .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(35px) saturate(200%);
             -webkit-backdrop-filter: blur(35px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 16px 48px rgba(0, 0, 0, 0.5),
+                0 8px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(0.98);
         }
 
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .logo::before {
             content: "◈";
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #ffffff, #c0c0c0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 16px;
+            gap: 6px;
         }
 
         .nav-links a {
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            padding: 4px 12px;
-            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            padding: 10px 18px;
+            border-radius: 25px;
             position: relative;
             overflow: hidden;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
+            backdrop-filter: blur(10px);
         }
 
         .nav-links a::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            border-radius: 25px;
+            z-index: -1;
         }
 
         .nav-links a:hover::before {
-            left: 100%;
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
@@ -158,6 +182,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -178,8 +203,15 @@
         }
 
         @keyframes textShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .hero p {
@@ -264,9 +296,19 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(-10px) rotate(240deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(-10px) rotate(240deg);
+            }
         }
 
         /* Content Sections */
@@ -307,7 +349,6 @@
             transform: translateY(50px);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
             transform-style: preserve-3d;
             border-radius: 20px;
         }
@@ -317,7 +358,7 @@
             transform: translateY(0);
         }
 
-        /* Efeito de luz que segue o mouse - mecânica do Conectividade Total */
+        /* Efeito de luz que segue o mouse */
         .card::before {
             content: '';
             position: absolute;
@@ -325,12 +366,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(
-                500px circle at var(--mouse-x, 0%) var(--mouse-y, 0%), 
-                rgba(255, 255, 255, 0.08) 0%, 
-                rgba(255, 255, 255, 0.04) 30%,
-                transparent 70%
-            );
+            background: radial-gradient(500px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
+                    rgba(255, 255, 255, 0.08) 0%,
+                    rgba(255, 255, 255, 0.04) 30%,
+                    transparent 70%);
             opacity: 0;
             transition: opacity 0.2s ease;
             border-radius: 20px;
@@ -349,13 +388,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(
-                300px circle at var(--mouse-x, 0%) var(--mouse-y, 0%), 
-                rgba(255, 255, 255, 0.5) 0%, 
-                rgba(255, 255, 255, 0.3) 15%,
-                rgba(255, 255, 255, 0.15) 30%,
-                transparent 60%
-            );
+            background: radial-gradient(300px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
+                    rgba(255, 255, 255, 0.5) 0%,
+                    rgba(255, 255, 255, 0.3) 15%,
+                    rgba(255, 255, 255, 0.15) 30%,
+                    transparent 60%);
             opacity: 0;
             transition: opacity 0.1s ease;
             border-radius: 20px;
@@ -368,14 +405,14 @@
             opacity: 1;
         }
 
-        .card > * {
+        .card>* {
             position: relative;
             z-index: 2;
         }
 
         .card:hover {
             transform: translateY(-12px) scale(1.04);
-            box-shadow: 
+            box-shadow:
                 0 25px 50px rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.15);
         }
@@ -393,7 +430,6 @@
             font-weight: 300;
         }
 
-        /* Animações sutis apenas no hover */
         .card:hover .card-icon {
             animation: gentle-pulse 2s ease-in-out infinite;
             background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%);
@@ -403,11 +439,14 @@
         }
 
         @keyframes gentle-pulse {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: scale(1.15);
                 filter: drop-shadow(0 8px 16px rgba(0, 255, 255, 0.2)) brightness(1.3);
             }
-            50% { 
+
+            50% {
                 transform: scale(1.2);
                 filter: drop-shadow(0 10px 20px rgba(0, 255, 255, 0.3)) brightness(1.4);
             }
@@ -437,6 +476,39 @@
             color: rgba(255, 255, 255, 0.95);
         }
 
+        /* Cursor personalizado - CORRIGIDO */
+        .cursor-ball {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(17, 17, 17, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Hover states para cursor */
+        .cursor-ball.hover {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .cursor-ball.click {
+            width: 16px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(17, 17, 17, 0.8);
+        }
 
 
         /* Responsive */
@@ -463,7 +535,7 @@
             .logo {
                 font-size: 1.1rem;
             }
-            
+
             .logo::before {
                 font-size: 1.2rem;
             }
@@ -550,6 +622,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Floating Elements -->
     <div class="floating-element"></div>
@@ -684,7 +757,7 @@
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;
-            
+
             document.querySelectorAll('.floating-element').forEach((el, index) => {
                 const speed = (index + 1) * 0.3;
                 el.style.transform = `translate3d(0, ${rate * speed}px, 0) rotate(${scrolled * 0.1}deg)`;
@@ -707,17 +780,17 @@
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
+
                 // Posição exata do mouse em pixels
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
-                
+
                 // Efeito de inclinação com maior sensibilidade
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 const rotateX = (y - centerY) / 10;
                 const rotateY = (centerX - x) / 10;
-                
+
                 card.style.transform = `
                     perspective(1000px) 
                     rotateX(${rotateX}deg) 
@@ -726,12 +799,12 @@
                     scale(1.04)
                 `;
             });
-            
+
             card.addEventListener('mouseenter', () => {
                 // Iniciar o efeito com transição mais rápida
                 card.style.transition = 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 // Reset suave da posição
                 card.style.setProperty('--mouse-x', '0px');
@@ -739,7 +812,7 @@
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
                 card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
-            
+
             // Inicializar variáveis CSS
             card.style.setProperty('--mouse-x', '0px');
             card.style.setProperty('--mouse-y', '0px');
@@ -766,7 +839,7 @@
                     const trail = document.createElement('div');
                     trail.className = `mouse-trail trail-${(i % 4) + 1}`;
                     document.body.appendChild(trail);
-                    
+
                     this.trails.push({
                         element: trail,
                         x: 0,
@@ -804,13 +877,13 @@
 
         // Add ripple effect to buttons
         document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
-                
+
                 ripple.style.cssText = `
                     position: absolute;
                     width: ${size}px;
@@ -823,9 +896,9 @@
                     animation: ripple 0.6s linear;
                     pointer-events: none;
                 `;
-                
+
                 this.appendChild(ripple);
-                
+
                 setTimeout(() => ripple.remove(), 600);
             });
         });
@@ -854,4 +927,5 @@
         }
     </script>
 </body>
+
 </html>
