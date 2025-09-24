@@ -45,16 +45,35 @@
         }
 
         @keyframes sparkle {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-150px); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-150px);
+            }
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Glass Effect */
@@ -80,9 +99,9 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.05) 50%,
-                rgba(255, 255, 255, 0.02) 100%);
+                    rgba(255, 255, 255, 0.1) 0%,
+                    rgba(255, 255, 255, 0.05) 50%,
+                    rgba(255, 255, 255, 0.02) 100%);
             border-radius: inherit;
             pointer-events: none;
         }
@@ -119,9 +138,9 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.03) 50%,
-                rgba(255, 255, 255, 0.01) 100%);
+                    rgba(255, 255, 255, 0.08) 0%,
+                    rgba(255, 255, 255, 0.03) 50%,
+                    rgba(255, 255, 255, 0.01) 100%);
             border-radius: inherit;
             pointer-events: none;
         }
@@ -186,8 +205,8 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.15) 0%,
-                rgba(255, 255, 255, 0.05) 100%);
+                    rgba(255, 255, 255, 0.15) 0%,
+                    rgba(255, 255, 255, 0.05) 100%);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -227,6 +246,7 @@
                 opacity: 0;
                 transform: translateY(60px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -248,8 +268,15 @@
         }
 
         @keyframes textShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .hero p {
@@ -319,9 +346,9 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(600px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0.06) 30%,
-                transparent 70%);
+                    rgba(255, 255, 255, 0.12) 0%,
+                    rgba(255, 255, 255, 0.06) 30%,
+                    transparent 70%);
             opacity: 0;
             transition: opacity 0.3s ease;
             border-radius: 30px;
@@ -333,7 +360,7 @@
             opacity: 1;
         }
 
-        .member-card > * {
+        .member-card>* {
             position: relative;
             z-index: 2;
         }
@@ -466,15 +493,26 @@
             z-index: 9998;
             transform: translate(-50%, -50%);
             opacity: 0.6;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
             transition: opacity 0.15s ease-out;
             backdrop-filter: blur(3px);
         }
 
-        .mouse-trail.trail-1 { opacity: 0.5; }
-        .mouse-trail.trail-2 { opacity: 0.45; }
-        .mouse-trail.trail-3 { opacity: 0.4; }
-        .mouse-trail.trail-4 { opacity: 0.35; }
+        .mouse-trail.trail-1 {
+            opacity: 0.5;
+        }
+
+        .mouse-trail.trail-2 {
+            opacity: 0.45;
+        }
+
+        .mouse-trail.trail-3 {
+            opacity: 0.4;
+        }
+
+        .mouse-trail.trail-4 {
+            opacity: 0.35;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -521,8 +559,8 @@
 
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.3) 0%,
-                rgba(255, 255, 255, 0.2) 100%);
+                    rgba(255, 255, 255, 0.3) 0%,
+                    rgba(255, 255, 255, 0.2) 100%);
             border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -530,8 +568,8 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.4) 0%,
-                rgba(255, 255, 255, 0.3) 100%);
+                    rgba(255, 255, 255, 0.4) 0%,
+                    rgba(255, 255, 255, 0.3) 100%);
         }
     </style>
 </head>
@@ -559,57 +597,78 @@
         <div class="team-grid">
             <!-- Agnaldo -->
             <div class="member-card glass">
-                <div class="member-avatar">👨‍💻</div>
+                <div class="member-avatar"></div>
                 <h3 class="member-name">Agnaldo</h3>
-                <p class="member-role">Desenvolvedor Backend</p>
+                <p class="member-role">Designer UI/UX</p>
                 <p class="member-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Sou um desenvolvedor apaixonado por tecnologia com 17 anos, atualmente estudando no SESI/SENAI.
+                    Minha jornada começou cedo, movida pela curiosidade sobre como as coisas funcionam no mundo digital.
+                    Ao longo dos anos, desenvolvi expertise em múltiplas linguagens de programação e frameworks, sempre
+                    focando em criar soluções eficientes e user-friendly. Acredito que a tecnologia deve simplificar a
+                    vida das pessoas.
                 </p>
                 <div class="member-buttons">
-                    <a href="#" class="member-btn primary">Portfolio</a>
-                    <a href="#" class="member-btn">GitHub</a>
+                    <a href="https://4gn.netlify.app" target="_blank" class="member-btn primary">Portfolio</a>
+                    <a href="github.com/AgnaldoScaion" class="member-btn">GitHub</a>
                 </div>
             </div>
 
             <!-- Augusto -->
             <div class="member-card glass">
-                <div class="member-avatar">🎨</div>
+                <div class="member-avatar"></div>
                 <h3 class="member-name">Augusto</h3>
-                <p class="member-role">Designer UI/UX</p>
+                <p class="member-role">Engenheiro de Hardware</p>
                 <p class="member-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Atualmente estudo no SESI com integração ao SENAI, no curso de Desenvolvimento de Sistemas. Já tive
+                    experiências como assistente técnico, onde desenvolvi habilidades em áreas técnicas e de atendimento
+                    ao cliente, sempre buscando aprender e crescer profissionalmente.
+                    Possuo certificações em tecnologia, informática avançada e programação, abrangendo desde
+                    desenvolvimento de sistemas até fundamentos de jogos virtuais. Também concluí cursos complementares
+                    que reforçam minha base em áreas técnicas e digitais.
                 </p>
                 <div class="member-buttons">
-                    <a href="#" class="member-btn primary">Portfolio</a>
-                    <a href="#" class="member-btn">Behance</a>
+                    <a href="https://www.linkedin.com/in/augustosena8/" class="member-btn primary">LinkedIn</a>
+                    <a href="https://github.com/augusto8sena" class="member-btn">Github</a>
                 </div>
             </div>
 
             <!-- Italo -->
             <div class="member-card glass">
-                <div class="member-avatar">⚡</div>
+                <div class="member-avatar"></div>
                 <h3 class="member-name">Italo</h3>
-                <p class="member-role">Engenheiro de Hardware</p>
+                <p class="member-role">Desenvolvedor Backend</p>
                 <p class="member-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Tenho interesse em áreas da tecnologia, administração e comunicação.
+                    Tenho experiência com programação, com foco em Back-End e sigo estudando novas ferramentas pra me
+                    destacar cada vez mais na área de desenvolvimento. Gosto bastante de gestão das tecnologias e de
+                    jornalismo com mais foco na área esportiva.
+                    Sou uma pessoa proativa com boa relação social, especialmente em grupos. Valorizo o trabalho em
+                    equipe, a troca de ideias e a construção de soluções em conjunto.
                 </p>
                 <div class="member-buttons">
-                    <a href="#" class="member-btn primary">LinkedIn</a>
-                    <a href="#" class="member-btn">Projetos</a>
+                    <a href="https://www.linkedin.com/in/%C3%ADtalo-nascimento-36394a305/"
+                        class="member-btn primary">LinkedIn</a>
+                    <a href="https://github.com/nascimentoI" class="member-btn">GitHub</a>
                 </div>
             </div>
 
             <!-- Miguel Z. -->
             <div class="member-card glass">
-                <div class="member-avatar">🚀</div>
+                <div class="member-avatar"></div>
                 <h3 class="member-name">Miguel Z.</h3>
                 <p class="member-role">Desenvolvedor Full Stack</p>
                 <p class="member-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Tenho interesse em tecnologia, arquitetura e áreas que envolvem criação e inovação. Gosto de
+                    desafios e estou sempre buscando evoluir, tanto no lado técnico quanto pessoal. Tenho experiência
+                    com frameworks como Laravel e sigo estudando novas ferramentas pra me destacar cada vez mais na área
+                    de desenvolvimento.
+                    Valorizo o trabalho em equipe, a troca de ideias e a construção de soluções em conjunto. Gosto de
+                    colaborar com quem está ao meu redor e acredito que crescer junto é sempre mais forte do que crescer
+                    sozinho.
                 </p>
                 <div class="member-buttons">
-                    <a href="#" class="member-btn primary">Website Pessoal</a>
-                    <a href="#" class="member-btn">GitHub</a>
+                    <a href="https://www.linkedin.com/in/miguelzacharias/" class="member-btn primary">LinkedIn</a>
+                    <a href="https://github.com/miguel-zacharias" class="member-btn">GitHub</a>
                 </div>
             </div>
         </div>
@@ -671,7 +730,7 @@
                 this.trailCount = 8;
                 this.init();
             }
-            
+
             init() {
                 for (let i = 0; i < this.trailCount; i++) {
                     const trail = document.createElement('div');
@@ -704,14 +763,14 @@
                 requestAnimationFrame(() => this.animate());
             }
         }
-        
+
         new MouseTrails();
 
         // Cursor personalizado
         const cursorBall = document.createElement('div');
         cursorBall.className = 'cursor-ball';
         document.body.appendChild(cursorBall);
-        
+
         const speed = 0.2;
 
         document.addEventListener('mousemove', (e) => {
