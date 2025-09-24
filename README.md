@@ -15,12 +15,6 @@ The project uses a **Raspberry Pi** to control a **conveyor belt** and a **mini 
 
 ---
 
-## 🎥 Preview  
-![Conveyor](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjEx/example_conveyor/giphy.gif)  
-*Conveyor belt simulation*  
-
-![Truck](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjEx/example_truck/giphy.gif)  
-*Mini truck prototype in action*  
 
 ---
 
