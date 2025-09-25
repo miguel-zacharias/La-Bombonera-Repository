@@ -12,6 +12,11 @@
             box-sizing: border-box;
             cursor: none !important;
         }
+        
+        body, body *, html {
+            cursor: none !important;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2d2d2d 40%, #404040 70%, #2d2d2d 90%, #1a1a1a 100%);
@@ -22,6 +27,7 @@
             cursor: none !important;
             position: relative;
         }
+        
         /* Partículas de fundo animadas */
         body::before {
             content: '';
@@ -40,31 +46,20 @@
             pointer-events: none;
             z-index: -1;
         }
+        
         @keyframes sparkle {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-150px);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-150px); }
         }
+        
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            25% {
-                background-position: 100% 50%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            75% {
-                background-position: 0% 100%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
         }
+        
         /* Glass Effect */
         .glass {
             background: rgba(255, 255, 255, 0.08);
@@ -79,6 +74,7 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             position: relative;
         }
+        
         .glass::before {
             content: '';
             position: absolute;
@@ -87,19 +83,20 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.1) 0%,
-                    rgba(255, 255, 255, 0.05) 50%,
-                    rgba(255, 255, 255, 0.02) 100%);
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.02) 100%);
             border-radius: inherit;
             pointer-events: none;
         }
+        
         /* Navigation */
         .navbar {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: auto;
+            width: 90%;
             max-width: 600px;
             padding: 18px 45px;
             z-index: 1000;
@@ -116,6 +113,7 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             overflow: hidden;
         }
+        
         .navbar::before {
             content: '';
             position: absolute;
@@ -124,22 +122,24 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.08) 0%,
-                    rgba(255, 255, 255, 0.03) 50%,
-                    rgba(255, 255, 255, 0.01) 100%);
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.03) 50%,
+                rgba(255, 255, 255, 0.01) 100%);
             border-radius: inherit;
             pointer-events: none;
         }
+        
         .nav-content {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             gap: 30px;
             position: relative;
             z-index: 2;
         }
+        
         .logo {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
             font-weight: 800;
             color: white;
             text-decoration: none;
@@ -150,6 +150,7 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
             position: relative;
         }
+        
         .logo::before {
             content: '';
             display: inline-block;
@@ -161,15 +162,21 @@
             margin-right: 8px;
             transition: all 0.4s ease;
         }
+        
         .logo:hover {
             transform: scale(1.08);
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
         }
+        
+        .logo:hover::before {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
         .back-button {
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             padding: 12px 20px;
             border-radius: 30px;
@@ -177,6 +184,7 @@
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
+        
         .back-button::before {
             content: '';
             position: absolute;
@@ -185,37 +193,132 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.15) 0%,
-                    rgba(255, 255, 255, 0.05) 100%);
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.05) 100%);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             border-radius: 30px;
             z-index: -1;
         }
+        
         .back-button:hover::before {
             transform: scaleX(1);
             transform-origin: left;
         }
+        
         .back-button:hover {
             color: white;
             text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
         }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 24px;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            position: relative;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-origin: center;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .mobile-menu .logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .mobile-menu .back-button {
+            font-size: 1.5rem;
+            padding: 15px 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu .back-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
+            padding: clamp(20px, 5vw, 40px);
             position: relative;
         }
+        
         .hero-content {
-            max-width: 900px;
+            max-width: 90%;
             animation: fadeInUp 1.2s ease-out;
         }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -226,11 +329,12 @@
                 transform: translateY(0);
             }
         }
+        
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
             color: white;
-            margin-bottom: 24px;
+            margin-bottom: clamp(16px, 3vw, 24px);
             background: linear-gradient(135deg, #ffffff, #e0e0e0, #ffffff, #f0f0f0);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -239,34 +343,33 @@
             animation: textShimmer 4s ease-in-out infinite;
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
+        
         @keyframes textShimmer {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
+        
         .hero p {
-            font-size: 1.6rem;
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
             color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 45px;
+            margin-bottom: clamp(25px, 5vw, 45px);
             line-height: 1.7;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
+        
         /* Team Section */
         .section {
-            padding: 120px 20px;
+            padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 40px);
             max-width: 1300px;
             margin: 0 auto;
         }
+        
         .section-title {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 800;
             text-align: center;
             color: white;
-            margin-bottom: 80px;
+            margin-bottom: clamp(40px, 8vw, 80px);
             opacity: 0;
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
@@ -276,18 +379,21 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .section-title.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 45vw, 400px), 1fr));
+            gap: clamp(20px, 5vw, 40px);
+            margin-top: clamp(30px, 6vw, 60px);
         }
+        
         .member-card {
-            padding: 50px 40px;
+            padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 40px);
             text-align: center;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             opacity: 0;
@@ -296,10 +402,12 @@
             overflow: hidden;
             border-radius: 30px;
         }
+        
         .member-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        
         .member-card::before {
             content: '';
             position: absolute;
@@ -308,78 +416,88 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(600px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
-                    rgba(255, 255, 255, 0.12) 0%,
-                    rgba(255, 255, 255, 0.06) 30%,
-                    transparent 70%);
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0.06) 30%,
+                transparent 70%);
             opacity: 0;
             transition: opacity 0.3s ease;
             border-radius: 30px;
             pointer-events: none;
             z-index: 0;
         }
+        
         .member-card:hover::before {
             opacity: 1;
         }
-        .member-card>* {
+        
+        .member-card > * {
             position: relative;
             z-index: 2;
         }
+        
         .member-card:hover {
             transform: translateY(-15px) scale(1.03);
             box-shadow:
                 0 30px 60px rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
+        
         .member-avatar {
-            width: 120px;
-            height: 120px;
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(80px, 15vw, 120px);
             border-radius: 50%;
-            margin: 0 auto 30px auto;
+            margin: 0 auto clamp(20px, 4vw, 30px) auto;
             background-size: cover;
             background-position: center;
             border: 3px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
         }
+        
         .member-card:hover .member-avatar {
             transform: scale(1.1) rotate(5deg);
             box-shadow: 0 12px 40px rgba(255, 215, 0, 0.3);
         }
+        
         .member-name {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             color: white;
-            margin-bottom: 15px;
+            margin-bottom: clamp(10px, 2vw, 15px);
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
+        
         .member-role {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 25px;
+            margin-bottom: clamp(15px, 3vw, 25px);
             font-weight: 500;
         }
+        
         .member-description {
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.7;
-            font-size: 1.1rem;
-            margin-bottom: 35px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-bottom: clamp(20px, 4vw, 35px);
             text-align: left;
         }
+        
         .member-buttons {
             display: flex;
-            gap: 15px;
+            gap: clamp(10px, 2vw, 15px);
             justify-content: center;
             flex-wrap: wrap;
         }
+        
         .member-btn {
             display: inline-block;
-            padding: 12px 25px;
+            padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 25px);
             background: rgba(255, 255, 255, 0.1);
             color: white;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -387,15 +505,18 @@
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
+        
         .member-btn:hover {
             transform: translateY(-3px) scale(1.05);
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
+        
         .member-btn.primary {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
+        
         .member-btn.primary:hover {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0.2) 100%);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
@@ -454,50 +575,104 @@
         }
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+            .navbar {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                width: calc(100% - 20px);
+                padding: 15px 20px;
+                transform: none;
             }
-            .hero p {
-                font-size: 1.3rem;
+            
+            .nav-content {
+                justify-content: space-between;
+                gap: 15px;
             }
-            .section-title {
-                font-size: 2.5rem;
+            
+            .back-button {
+                display: none;
             }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero {
+                min-height: 80vh;
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 40px 15px;
+            }
+            
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
+            
             .member-card {
-                padding: 40px 30px;
+                padding: 30px 20px;
             }
+            
             .member-buttons {
                 flex-direction: column;
                 align-items: center;
             }
+            
             .member-btn {
-                width: 200px;
+                width: 80%;
+                max-width: 200px;
+                text-align: center;
             }
         }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .navbar {
+                top: 15px;
+                width: 95%;
+                max-width: none;
+                padding: 15px 30px;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
+        }
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
+        
         ::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
         }
+        
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.3) 0%,
-                    rgba(255, 255, 255, 0.2) 100%);
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.2) 100%);
             border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.4) 0%,
-                    rgba(255, 255, 255, 0.3) 100%);
+                rgba(255, 255, 255, 0.4) 0%,
+                rgba(255, 255, 255, 0.3) 100%);
         }
     </style>
 </head>
@@ -507,8 +682,22 @@
         <div class="nav-content">
             <a href="#" class="logo">La Bombonera</a>
             <a href="https://labombo.rf.gd/" class="back-button">← Voltar</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#" class="logo">La Bombonera</a>
+            <a href="https://labombo.rf.gd/" class="back-button">← Voltar ao Site Principal</a>
+        </div>
+    </div>
+    
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -516,6 +705,7 @@
             <p>Conheça os desenvolvedores por trás do projeto La Bombonera</p>
         </div>
     </section>
+    
     <!-- Team Section -->
     <section class="section">
         <h2 class="section-title">Membros da Equipe</h2>
@@ -534,9 +724,10 @@
                 </p>
                 <div class="member-buttons">
                     <a href="https://4gn.netlify.app" target="_blank" class="member-btn primary">Portfolio</a>
-                    <a href="github.com/AgnaldoScaion" class="member-btn">GitHub</a>
+                    <a href="https://github.com/AgnaldoScaion" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
+            
             <!-- Augusto -->
             <div class="member-card glass">
                 <div class="member-avatar" style="background-image: url('https://i.ibb.co/xKz9gh49/1757539517302.jpg');"></div>
@@ -551,10 +742,11 @@
                     que reforçam minha base em áreas técnicas e digitais.
                 </p>
                 <div class="member-buttons">
-                    <a href="https://www.linkedin.com/in/augustosena8/" class="member-btn primary">LinkedIn</a>
-                    <a href="https://github.com/augusto8sena" class="member-btn">Github</a>
+                    <a href="https://www.linkedin.com/in/augustosena8/" target="_blank" class="member-btn primary">LinkedIn</a>
+                    <a href="https://github.com/augusto8sena" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
+            
             <!-- Italo -->
             <div class="member-card glass">
                 <div class="member-avatar" style="background-image: url('https://i.ibb.co/rf6CznQW/1757072889235.png');"></div>
@@ -569,11 +761,11 @@
                     equipe, a troca de ideias e a construção de soluções em conjunto.
                 </p>
                 <div class="member-buttons">
-                    <a href="https://www.linkedin.com/in/%C3%ADtalo-nascimento-36394a305/"
-                        class="member-btn primary">LinkedIn</a>
-                    <a href="https://github.com/nascimentoI" class="member-btn">GitHub</a>
+                    <a href="https://www.linkedin.com/in/%C3%ADtalo-nascimento-36394a305/" target="_blank" class="member-btn primary">LinkedIn</a>
+                    <a href="https://github.com/nascimentoI" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
+            
             <!-- Miguel Z. -->
             <div class="member-card glass">
                 <div class="member-avatar" style="background-image: url('https://i.ibb.co/7xmJXKR3/1758745915448.png');"></div>
@@ -589,18 +781,58 @@
                     sozinho.
                 </p>
                 <div class="member-buttons">
-                    <a href="https://www.linkedin.com/in/miguelzacharias/" class="member-btn primary">LinkedIn</a>
-                    <a href="https://github.com/miguel-zacharias" class="member-btn">GitHub</a>
+                    <a href="https://www.linkedin.com/in/miguelzacharias/" target="_blank" class="member-btn primary">LinkedIn</a>
+                    <a href="https://github.com/miguel-zacharias" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
         </div>
     </section>
+    
     <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && !e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -608,6 +840,7 @@
                 }
             });
         }, observerOptions);
+
         // Observe elements for animation
         document.querySelectorAll('.section-title, .member-card').forEach(el => {
             observer.observe(el);
@@ -694,7 +927,8 @@
             el.addEventListener('mouseenter', () => cursorBall.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorBall.classList.remove('hover'));
         });
-        // Ripple effect para botões
+
+        // Ripple effect for buttons
         document.querySelectorAll('.member-btn').forEach(button => {
             button.addEventListener('click', function (e) {
                 const ripple = document.createElement('span');
@@ -702,23 +936,30 @@
                 const size = Math.max(rect.width, rect.height) * 1.2;
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
+                
                 ripple.style.cssText = `
                     position: absolute;
                     width: ${size}px;
                     height: ${size}px;
                     left: ${x}px;
                     top: ${y}px;
-                    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+                    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
                     border-radius: 50%;
                     transform: scale(0);
-                    animation: ripple 0.6s ease-out;
+                    animation: ripple 0.6s cubic-bezier(0.23, 1, 0.32, 1);
                     pointer-events: none;
+                    z-index: 1000;
                 `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
                 this.appendChild(ripple);
+                
                 setTimeout(() => ripple.remove(), 600);
             });
         });
-        // CSS para animação do ripple
+
+        // Add ripple animation keyframes
         const style = document.createElement('style');
         style.textContent = `
             @keyframes ripple {
@@ -729,6 +970,11 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Prevent context menu and text selection to hide cursor completely
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
     </script>
 </body>
 </html>

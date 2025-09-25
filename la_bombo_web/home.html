@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +10,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none !important;
+            cursor: none !important; /* Hide cursor completely */
         }
-
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2d2d2d 40%, #404040 70%, #2d2d2d 90%, #1a1a1a 100%);
@@ -21,8 +20,13 @@
             animation: gradientShift 20s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
-            cursor: none !important;
             position: relative;
+            cursor: none !important; /* Force hide cursor */
+        }
+
+        /* Force hide cursor on all elements */
+        body, body *, html {
+            cursor: none !important;
         }
 
         /* Partículas de fundo animadas */
@@ -43,12 +47,12 @@
             pointer-events: none;
             z-index: -1;
         }
-
+        
         @keyframes sparkle {
             0% { transform: translateX(0); }
             100% { transform: translateX(-150px); }
         }
-
+        
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
@@ -56,8 +60,8 @@
             75% { background-position: 0% 100%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Liquid Glass Effect Melhorado */
+        
+        /* Liquid Glass Effect */
         .glass {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(25px) saturate(180%);
@@ -71,7 +75,7 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             position: relative;
         }
-
+        
         .glass::before {
             content: '';
             position: absolute;
@@ -79,21 +83,21 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.1) 0%, 
-                rgba(255, 255, 255, 0.05) 50%, 
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
                 rgba(255, 255, 255, 0.02) 100%);
             border-radius: inherit;
             pointer-events: none;
         }
-
-        /* Navigation - HEADER BLUR APRIMORADO */
+        
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: auto;
+            width: 90%;
             max-width: 900px;
             padding: 18px 45px;
             z-index: 1000;
@@ -110,7 +114,7 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             overflow: hidden;
         }
-
+        
         .navbar::before {
             content: '';
             position: absolute;
@@ -118,14 +122,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.08) 0%, 
-                rgba(255, 255, 255, 0.03) 50%, 
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.03) 50%,
                 rgba(255, 255, 255, 0.01) 100%);
             border-radius: inherit;
             pointer-events: none;
         }
-
+        
         .navbar.scrolled {
             background: rgba(0, 0, 0, 0.35);
             backdrop-filter: blur(50px) saturate(220%) brightness(130%);
@@ -136,9 +140,8 @@
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.25),
                 inset 0 -1px 0 rgba(255, 255, 255, 0.08);
-            transform: translateX(-50%) scale(0.96);
         }
-
+        
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -147,9 +150,9 @@
             position: relative;
             z-index: 2;
         }
-
+        
         .logo {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
             font-weight: 800;
             color: white;
             text-decoration: none;
@@ -160,7 +163,7 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
             position: relative;
         }
-
+        
         .logo::before {
             content: '';
             display: inline-block;
@@ -172,16 +175,17 @@
             margin-right: 8px;
             transition: all 0.4s ease;
         }
-
+        
         .logo:hover {
             transform: scale(1.08);
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
         }
-
+        
         .logo:hover::before {
             transform: rotate(10deg) scale(1.1);
         }
-
+        
+        /* Desktop Navigation Links */
         .nav-links {
             display: flex;
             list-style: none;
@@ -189,12 +193,12 @@
             position: relative;
             z-index: 2;
         }
-
+        
         .nav-links a {
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             padding: 12px 20px;
             border-radius: 30px;
@@ -202,7 +206,7 @@
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
-
+        
         .nav-links a::before {
             content: '';
             position: absolute;
@@ -210,8 +214,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.15) 0%, 
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.15) 0%,
                 rgba(255, 255, 255, 0.05) 100%);
             transform: scaleX(0);
             transform-origin: right;
@@ -219,34 +223,124 @@
             border-radius: 30px;
             z-index: -1;
         }
-
+        
         .nav-links a:hover::before {
             transform: scaleX(1);
             transform-origin: left;
         }
-
+        
         .nav-links a:hover {
             color: white;
             text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
         }
-
-        /* Hero Section Melhorada */
-        .hero {
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 24px;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            position: relative;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-origin: center;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 15px 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
+            padding: clamp(20px, 5vw, 40px);
             position: relative;
         }
-
+        
         .hero-content {
-            max-width: 900px;
+            max-width: 90%;
             animation: fadeInUp 1.2s ease-out;
         }
-
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -257,12 +351,12 @@
                 transform: translateY(0);
             }
         }
-
+        
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 900;
             color: white;
-            margin-bottom: 24px;
+            margin-bottom: clamp(16px, 3vw, 24px);
             background: linear-gradient(135deg, #ffffff, #e0e0e0, #ffffff, #f0f0f0);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -271,29 +365,29 @@
             animation: textShimmer 4s ease-in-out infinite;
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
-
+        
         @keyframes textShimmer {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-
+        
         .hero p {
-            font-size: 1.6rem;
+            font-size: clamp(1rem, 3vw, 1.4rem);
             color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 45px;
+            margin-bottom: clamp(20px, 5vw, 40px);
             line-height: 1.7;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
-
+        
         .cta-button {
             display: inline-block;
-            padding: 20px 40px;
+            padding: clamp(12px, 3vw, 18px) clamp(24px, 5vw, 36px);
             background: rgba(255, 255, 255, 0.1);
             color: white;
             text-decoration: none;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -301,13 +395,13 @@
             overflow: hidden;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
-
+        
         .cta-button:hover {
             transform: translateY(-6px) scale(1.05);
             background: rgba(255, 255, 255, 0.18);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
-
+        
         .cta-button::after {
             content: '';
             position: absolute;
@@ -320,13 +414,13 @@
             transform: translate(-50%, -50%);
             border-radius: 50%;
         }
-
+        
         .cta-button:hover::after {
             width: 400px;
             height: 400px;
         }
-
-        /* Floating Elements Melhorados */
+        
+        /* Floating Elements */
         .floating-element {
             position: absolute;
             border-radius: 50%;
@@ -336,51 +430,51 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
-
+        
         .floating-element:nth-child(1) {
-            width: 120px;
-            height: 120px;
+            width: clamp(60px, 10vw, 100px);
+            height: clamp(60px, 10vw, 100px);
             top: 15%;
             left: 8%;
             animation-delay: 0s;
         }
-
+        
         .floating-element:nth-child(2) {
-            width: 180px;
-            height: 180px;
+            width: clamp(80px, 15vw, 140px);
+            height: clamp(80px, 15vw, 140px);
             top: 55%;
             right: 12%;
             animation-delay: 2.5s;
         }
-
+        
         .floating-element:nth-child(3) {
-            width: 100px;
-            height: 100px;
+            width: clamp(50px, 8vw, 80px);
+            height: clamp(50px, 8vw, 80px);
             bottom: 18%;
             left: 18%;
             animation-delay: 5s;
         }
-
+        
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             25% { transform: translateY(-25px) rotate(90deg); }
             50% { transform: translateY(-15px) rotate(180deg); }
             75% { transform: translateY(-30px) rotate(270deg); }
         }
-
-        /* Content Sections Melhoradas */
+        
+        /* Content Sections */
         .section {
-            padding: 120px 20px;
+            padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 40px);
             max-width: 1300px;
             margin: 0 auto;
         }
-
+        
         .section-title {
-            font-size: 3.5rem;
+            font-size: clamp(1.8rem, 6vw, 3rem);
             font-weight: 800;
             text-align: center;
             color: white;
-            margin-bottom: 80px;
+            margin-bottom: clamp(40px, 8vw, 60px);
             opacity: 0;
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
@@ -390,28 +484,28 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
+        
         .section-title.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
+        
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 40vw, 300px), 1fr));
+            gap: clamp(20px, 5vw, 30px);
+            margin-top: clamp(40px, 8vw, 50px);
         }
-
-        /* NOVO: Card especial para o grupo */
+        
+        /* Team Card */
         .team-card {
             grid-column: 1 / -1;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            padding: 50px 40px;
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.15) 0%, 
-                rgba(255, 255, 255, 0.08) 50%, 
+            max-width: 90%;
+            margin: 0 auto clamp(20px, 5vw, 30px) auto;
+            padding: clamp(20px, 5vw, 40px);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.08) 50%,
                 rgba(255, 255, 255, 0.12) 100%);
             backdrop-filter: blur(30px) saturate(200%);
             -webkit-backdrop-filter: blur(30px) saturate(200%);
@@ -424,7 +518,7 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         .team-card::before {
             content: '';
             position: absolute;
@@ -432,22 +526,22 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 40%, 
-                rgba(255, 255, 255, 0.03) 50%, 
+            background: linear-gradient(45deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.03) 50%,
                 transparent 60%);
             animation: shimmer 6s linear infinite;
             pointer-events: none;
         }
-
+        
         @keyframes shimmer {
             0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
             100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
         }
-
+        
         .team-icon {
-            font-size: 5rem;
-            margin-bottom: 25px;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            margin-bottom: clamp(15px, 3vw, 20px);
             display: inline-block;
             background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
             -webkit-background-clip: text;
@@ -455,17 +549,17 @@
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.3));
         }
-
+        
         .team-members {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: clamp(15px, 3vw, 25px);
+            margin-top: clamp(20px, 4vw, 25px);
             flex-wrap: wrap;
         }
-
+        
         .member {
-            padding: 15px 25px;
+            padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px);
             background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -474,16 +568,17 @@
             font-weight: 600;
             color: white;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
         }
-
+        
         .member:hover {
             transform: translateY(-5px) scale(1.05);
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
-
+        
         .card {
-            padding: 45px 35px;
+            padding: clamp(20px, 5vw, 35px);
             text-align: center;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             opacity: 0;
@@ -493,73 +588,22 @@
             transform-style: preserve-3d;
             border-radius: 24px;
         }
-
+        
         .card.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(600px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
-                    rgba(255, 255, 255, 0.12) 0%,
-                    rgba(255, 255, 255, 0.06) 30%,
-                    transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 24px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(400px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
-                    rgba(255, 255, 255, 0.6) 0%,
-                    rgba(255, 255, 255, 0.4) 15%,
-                    rgba(255, 255, 255, 0.2) 30%,
-                    transparent 60%);
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            border-radius: 24px;
-            pointer-events: none;
-            z-index: 1;
-            mix-blend-mode: overlay;
-        }
-
-        .card:hover::after {
-            opacity: 1;
-        }
-
-        .card > * {
-            position: relative;
-            z-index: 2;
-        }
-
+        
         .card:hover {
             transform: translateY(-15px) scale(1.05);
             box-shadow:
                 0 30px 60px rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
-
+        
         .card-icon {
-            font-size: 4.5rem;
-            margin-bottom: 25px;
+            font-size: clamp(3rem, 8vw, 4rem);
+            margin-bottom: clamp(15px, 3vw, 20px);
             display: inline-block;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
@@ -569,44 +613,20 @@
             -webkit-text-fill-color: transparent;
             font-weight: 300;
         }
-
-        .card:hover .card-icon {
-            animation: gentle-pulse 2.5s ease-in-out infinite;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.85) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes gentle-pulse {
-            0%, 100% {
-                transform: scale(1.2);
-                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)) brightness(1.4);
-            }
-            50% {
-                transform: scale(1.25);
-                filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2)) brightness(1.5);
-            }
-        }
-
+        
         .card h3 {
-            font-size: 2rem;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
             font-weight: 700;
             color: white;
-            margin-bottom: 18px;
+            margin-bottom: clamp(12px, 2vw, 16px);
             transition: all 0.4s ease;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
-
-        .card:hover h3 {
-            color: rgba(255, 255, 255, 1);
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-        }
-
+        
         .card p {
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.7;
-            font-size: 1.15rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.4s ease;
         }
 
@@ -672,104 +692,88 @@
         /* Responsive Melhorado */
         @media (max-width: 768px) {
             .navbar {
-                top: 15px;
-                max-width: 95%;
-                padding: 15px 25px;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                width: calc(100% - 20px);
+                padding: 15px 20px;
+                transform: none;
             }
-
+            
             .nav-content {
-                gap: 25px;
+                justify-content: space-between;
+                gap: 20px;
             }
-
+            
             .nav-links {
-                gap: 5px;
+                display: none;
             }
-
-            .nav-links a {
-                font-size: 0.85rem;
-                padding: 10px 16px;
+            
+            .hamburger {
+                display: flex;
             }
-
-            .logo {
-                font-size: 1.2rem;
+            
+            .hero {
+                min-height: 80vh;
+                padding: 20px;
             }
-
-            .hero h1 {
-                font-size: 3rem;
+            
+            .section {
+                padding: 40px 15px;
             }
-
-            .hero p {
-                font-size: 1.3rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
+            
             .cards-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .card {
-                padding: 35px 25px;
-            }
-
-            .team-card {
-                padding: 40px 30px;
-            }
-
-            .team-members {
                 gap: 15px;
             }
-
-            .member {
-                padding: 12px 20px;
-                font-size: 0.9rem;
+            
+            .floating-element {
+                display: none;
             }
         }
-
-        /* Custom Scrollbar Melhorada */
+        
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
+        }
+        
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-
+        
         ::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
         }
-
+        
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.3) 0%, 
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.3) 0%,
                 rgba(255, 255, 255, 0.2) 100%);
             border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.4) 0%, 
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.4) 0%,
                 rgba(255, 255, 255, 0.3) 100%);
-        }
-
-        /* Ripple Effect Melhorado */
-        @keyframes ripple {
-            to {
-                transform: scale(2.5);
-                opacity: 0;
-            }
         }
     </style>
 </head>
-
 <body>
     <!-- Floating Elements -->
     <div class="floating-element"></div>
     <div class="floating-element"></div>
     <div class="floating-element"></div>
-
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
@@ -780,9 +784,24 @@
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
-
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
+    
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">
@@ -791,16 +810,15 @@
             <a href="#projetos" class="cta-button">Explorar Projetos</a>
         </div>
     </section>
-
+    
     <!-- About Section -->
     <section class="section" id="sobre">
         <h2 class="section-title">Por que escolher o Pico 2W?</h2>
-        
         <!-- Card especial do grupo -->
         <div class="team-card glass">
             <div class="team-icon">👥</div>
-            <h3 style="font-size: 2.5rem; margin-bottom: 20px; color: white; text-shadow: 0 4px 16px rgba(0,0,0,0.3);">Nosso Grupo</h3>
-            <p style="font-size: 1.3rem; color: rgba(255,255,255,0.9); margin-bottom: 25px; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+            <h3 style="font-size: clamp(1.8rem, 4vw, 2.2rem); margin-bottom: clamp(15px, 3vw, 20px); color: white; text-shadow: 0 4px 16px rgba(0,0,0,0.3);">Nosso Grupo</h3>
+            <p style="font-size: clamp(1rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.9); margin-bottom: clamp(15px, 3vw, 20px); text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                 Conheça a equipe por trás deste projeto inovador com Raspberry Pi Pico 2W
             </p>
             <div class="team-members">
@@ -809,13 +827,12 @@
                 <div class="member">Italo</div>
                 <div class="member">Miguel Z.</div>
             </div>
-            <div style="margin-top: 30px;">
+            <div style="margin-top: clamp(20px, 4vw, 25px);">
                 <a href="https://losbomb.rf.gd" class="cta-button" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%); border: 1px solid rgba(255, 215, 0, 0.3);">
                     Conheça Mais Sobre Nós
                 </a>
             </div>
         </div>
-
         <div class="cards-grid">
             <div class="card glass">
                 <div class="card-icon">◐</div>
@@ -834,7 +851,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Projects Section -->
     <section class="section" id="projetos">
         <h2 class="section-title">Projetos em Destaque</h2>
@@ -842,32 +859,68 @@
             <div class="card glass">
                 <div class="card-icon">◈</div>
                 <h3>Projeto Raspberry</h3>
-                <p>Uma esteira com todo seu processo automatizado, o
-                    finalizador (carrinho) contará com um sensor infravermelho PIR, que irá enviar um sinal para
-                    interromper a entrega na esteira, com isso o carrinho terá que ser capaz de descarregar seus
-                    produtos. </p>
+                <p>Uma esteira com todo seu processo automatizado, o finalizador (carrinho) contará com um sensor infravermelho PIR, que irá enviar um sinal para interromper a entrega na esteira, com isso o carrinho terá que ser capaz de descarregar seus produtos.</p>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section class="section" id="contato">
         <h2 class="section-title">Junte-se à Comunidade</h2>
         <div style="text-align: center;">
-            <div class="card glass" style="max-width: 600px; margin: 0 auto;">
+            <div class="card glass" style="max-width: 90%; margin: 0 auto;">
                 <div class="card-icon">◈</div>
                 <h3>La Bombonera Community</h3>
                 <p>Conecte-se com outros makers, compartilhe projetos e aprenda com nossa comunidade vibrante!</p>
                 <br>
-                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="display: flex; justify-content: center; gap: clamp(15px, 3vw, 20px); flex-wrap: wrap;">
                     <a href="https://github.com/miguel-zacharias/La-Bombonera-Repository" target="_blank" class="cta-button">GitHub</a>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <script>
-        // Smooth scrolling
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && !e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Smooth scrolling for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -884,7 +937,7 @@
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -900,26 +953,19 @@
             observer.observe(el);
         });
 
-        // Parallax effect for floating elements - Melhorado
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.3;
-
-            document.querySelectorAll('.floating-element').forEach((el, index) => {
-                const speed = (index + 1) * 0.2;
-                const rotation = scrolled * 0.05;
-                el.style.transform = `translate3d(0, ${rate * speed}px, 0) rotate(${rotation}deg)`;
-            });
-        });
-
-        // Navbar background on scroll - Melhorado
+        // Navbar scroll effect
+        let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            lastScrollTop = scrollTop;
         });
 
         // Efeito de seguir o mouse nos cards - Aprimorado
@@ -950,23 +996,26 @@
             card.addEventListener('mouseenter', () => {
                 card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
             });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.setProperty('--mouse-x', '0px');
-                card.style.setProperty('--mouse-y', '0px');
-                card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
-                card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
-            });
-
-            // Inicializar variáveis CSS
-            card.style.setProperty('--mouse-x', '0px');
-            card.style.setProperty('--mouse-y', '0px');
         });
 
-        // Add stagger animation to cards - Melhorado
+        // Card hover effects for desktop only
+        if (window.matchMedia('(hover: hover)').matches) {
+            document.querySelectorAll('.card, .team-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                    card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                });
+            });
+        }
+
+        // Add stagger animation to cards
         const cards = document.querySelectorAll('.card');
         cards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.15}s`;
+            card.style.transitionDelay = `${index * 0.1}s`;
         });
 
         // Mouse Trails System - Aprimorado
@@ -1029,41 +1078,48 @@
                 const size = Math.max(rect.width, rect.height) * 1.5;
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
-
+                
                 ripple.style.cssText = `
                     position: absolute;
                     width: ${size}px;
                     height: ${size}px;
                     left: ${x}px;
                     top: ${y}px;
-                    background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 70%);
+                    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
                     border-radius: 50%;
                     transform: scale(0);
-                    animation: ripple 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+                    animation: ripple 0.6s cubic-bezier(0.23, 1, 0.32, 1);
                     pointer-events: none;
+                    z-index: 1000;
                 `;
-
+                
+                // Add keyframe animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes ripple {
+                        to {
+                            transform: scale(2.5);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
                 this.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 800);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                    style.remove();
+                }, 600);
             });
         });
 
-        // Cursor personalizado aprimorado
-        if (!document.querySelector('.cursor-ball')) {
-            const cursorBall = document.createElement('div');
-            cursorBall.className = 'cursor-ball';
-            document.body.appendChild(cursorBall);
-            
-            let mouseX = 0, mouseY = 0;
-            let ballX = 0, ballY = 0;
-            const speed = 0.2;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-        }
+        // Prevent context menu and text selection to hide cursor completely
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
     </script>
 </body>
-
 </html>
