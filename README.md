@@ -66,7 +66,7 @@ cd La-Bombonera-Repository
 - **Italo** - Hardware Engineering
 - **Miguel Z.** - Full Stack Development
 
-Visit our [team page](https://losbomb.rf.gd) to learn more about each member.
+Visit our [team page](https://labomba.rf.gd) to learn more about each member.
 
 ---
 
