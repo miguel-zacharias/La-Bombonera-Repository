@@ -97,7 +97,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## 📞 Contact
-- **Project Website:** [losbomb.rf.gd](https://losbomb.rf.gd)
+- **Project Website:** [La Bombonera](https://labombo.rf.gd)
 - **Repository:** [GitHub](https://github.com/miguel-zacharias/La-Bombonera-Repository)
 
 ---
