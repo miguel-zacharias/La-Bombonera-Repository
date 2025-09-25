@@ -521,6 +521,7 @@
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0.2) 100%);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
         }
+        
         /* Cursor personalizado */
         .cursor-ball {
             position: fixed;
@@ -538,6 +539,7 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(8px);
         }
+        
         .cursor-ball.hover {
             width: 45px;
             height: 45px;
@@ -545,6 +547,7 @@
             border: 2px solid rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(15px);
         }
+        
         /* Mouse Trails */
         .mouse-trail {
             position: fixed;
@@ -561,18 +564,23 @@
             transition: opacity 0.15s ease-out;
             backdrop-filter: blur(3px);
         }
+        
         .mouse-trail.trail-1 {
             opacity: 0.5;
         }
+        
         .mouse-trail.trail-2 {
             opacity: 0.45;
         }
+        
         .mouse-trail.trail-3 {
             opacity: 0.4;
         }
+        
         .mouse-trail.trail-4 {
             opacity: 0.35;
         }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .navbar {
@@ -589,13 +597,6 @@
                 gap: 15px;
             }
             
-            .back-button {
-                display: none;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
             
             .hero {
                 min-height: 80vh;
@@ -792,14 +793,13 @@
         // Hamburger menu functionality
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
-
+        
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
@@ -808,7 +808,7 @@
                 document.body.style.overflow = '';
             });
         });
-
+        
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (mobileMenu.classList.contains('active') && !e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
@@ -817,7 +817,7 @@
                 document.body.style.overflow = '';
             }
         });
-
+        
         // Close mobile menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
@@ -826,13 +826,13 @@
                 document.body.style.overflow = '';
             }
         });
-
+        
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
-
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -840,11 +840,12 @@
                 }
             });
         }, observerOptions);
-
+        
         // Observe elements for animation
         document.querySelectorAll('.section-title, .member-card').forEach(el => {
             observer.observe(el);
         });
+        
         // Mouse effect nos cards
         document.querySelectorAll('.member-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -854,19 +855,23 @@
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
+            
             card.addEventListener('mouseleave', () => {
                 card.style.setProperty('--mouse-x', '0px');
                 card.style.setProperty('--mouse-y', '0px');
             });
+            
             // Inicializar variáveis CSS
             card.style.setProperty('--mouse-x', '0px');
             card.style.setProperty('--mouse-y', '0px');
         });
+        
         // Stagger animation para cards
         const cards = document.querySelectorAll('.member-card');
         cards.forEach((card, index) => {
             card.style.transitionDelay = `${index * 0.2}s`;
         });
+        
         // Mouse Trails System
         class MouseTrails {
             constructor() {
@@ -876,7 +881,11 @@
                 this.trailCount = 8;
                 this.init();
             }
+            
             init() {
+                // Verificar se é dispositivo móvel
+                if (window.innerWidth <= 768) return;
+                
                 for (let i = 0; i < this.trailCount; i++) {
                     const trail = document.createElement('div');
                     trail.className = `mouse-trail trail-${(i % 4) + 1}`;
@@ -887,13 +896,18 @@
                         y: 0
                     });
                 }
+                
                 document.addEventListener('mousemove', (e) => {
                     this.mouseX = e.clientX;
                     this.mouseY = e.clientY;
                 });
+                
                 this.animate();
             }
+            
             animate() {
+                if (window.innerWidth <= 768) return;
+                
                 this.trails.forEach((trail, index) => {
                     const speed = 0.5 + (index * 0.05);
                     trail.x += (this.mouseX - trail.x) * speed;
@@ -901,6 +915,7 @@
                     trail.element.style.left = trail.x + 'px';
                     trail.element.style.top = trail.y + 'px';
                 });
+                
                 requestAnimationFrame(() => this.animate());
             }
         }
@@ -958,7 +973,7 @@
                 setTimeout(() => ripple.remove(), 600);
             });
         });
-
+        
         // Add ripple animation keyframes
         const style = document.createElement('style');
         style.textContent = `
@@ -970,7 +985,7 @@
             }
         `;
         document.head.appendChild(style);
-
+        
         // Prevent context menu and text selection to hide cursor completely
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('selectstart', e => e.preventDefault());
