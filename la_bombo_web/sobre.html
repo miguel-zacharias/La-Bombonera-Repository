@@ -12,11 +12,11 @@
             box-sizing: border-box;
             cursor: none !important;
         }
-        
+
         body, body *, html {
             cursor: none !important;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2d2d2d 40%, #404040 70%, #2d2d2d 90%, #1a1a1a 100%);
@@ -24,10 +24,9 @@
             animation: gradientShift 20s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
-            cursor: none !important;
             position: relative;
         }
-        
+
         /* Partículas de fundo animadas */
         body::before {
             content: '';
@@ -46,12 +45,12 @@
             pointer-events: none;
             z-index: -1;
         }
-        
+
         @keyframes sparkle {
             0% { transform: translateX(0); }
             100% { transform: translateX(-150px); }
         }
-        
+
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
@@ -59,7 +58,7 @@
             75% { background-position: 0% 100%; }
             100% { background-position: 0% 50%; }
         }
-        
+
         /* Glass Effect */
         .glass {
             background: rgba(255, 255, 255, 0.08);
@@ -74,7 +73,7 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             position: relative;
         }
-        
+
         .glass::before {
             content: '';
             position: absolute;
@@ -89,7 +88,7 @@
             border-radius: inherit;
             pointer-events: none;
         }
-        
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -113,7 +112,7 @@
                 inset 0 -1px 0 rgba(255, 255, 255, 0.05);
             overflow: hidden;
         }
-        
+
         .navbar::before {
             content: '';
             position: absolute;
@@ -128,7 +127,7 @@
             border-radius: inherit;
             pointer-events: none;
         }
-        
+
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -137,7 +136,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .logo {
             font-size: clamp(1.2rem, 4vw, 1.4rem);
             font-weight: 800;
@@ -150,7 +149,7 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
             position: relative;
         }
-        
+
         .logo::before {
             content: '';
             display: inline-block;
@@ -162,16 +161,16 @@
             margin-right: 8px;
             transition: all 0.4s ease;
         }
-        
+
         .logo:hover {
             transform: scale(1.08);
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
         }
-        
+
         .logo:hover::before {
             transform: rotate(10deg) scale(1.1);
         }
-        
+
         .back-button {
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
@@ -184,7 +183,7 @@
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
-        
+
         .back-button::before {
             content: '';
             position: absolute;
@@ -201,18 +200,18 @@
             border-radius: 30px;
             z-index: -1;
         }
-        
+
         .back-button:hover::before {
             transform: scaleX(1);
             transform-origin: left;
         }
-        
+
         .back-button:hover {
             color: white;
             text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
             transform: translateY(-2px);
         }
-        
+
         /* Hamburger Menu */
         .hamburger {
             display: none;
@@ -227,7 +226,7 @@
             z-index: 1001;
             position: relative;
         }
-        
+
         .hamburger span {
             display: block;
             height: 3px;
@@ -237,20 +236,20 @@
             transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             transform-origin: center;
         }
-        
+
         .hamburger.active span:nth-child(1) {
             transform: translateY(10.5px) rotate(45deg);
         }
-        
+
         .hamburger.active span:nth-child(2) {
             opacity: 0;
             transform: scaleX(0);
         }
-        
+
         .hamburger.active span:nth-child(3) {
             transform: translateY(-10.5px) rotate(-45deg);
         }
-        
+
         /* Mobile Menu Overlay */
         .mobile-menu {
             position: fixed;
@@ -270,25 +269,25 @@
             transform: translateY(-100%);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        
+
         .mobile-menu.active {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
+
         .mobile-menu-content {
             display: flex;
             flex-direction: column;
             gap: 30px;
             text-align: center;
         }
-        
+
         .mobile-menu .logo {
             font-size: 2rem;
             margin-bottom: 20px;
         }
-        
+
         .mobile-menu .back-button {
             font-size: 1.5rem;
             padding: 15px 30px;
@@ -296,13 +295,13 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .mobile-menu .back-button:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -313,12 +312,12 @@
             padding: clamp(20px, 5vw, 40px);
             position: relative;
         }
-        
+
         .hero-content {
             max-width: 90%;
             animation: fadeInUp 1.2s ease-out;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -329,7 +328,7 @@
                 transform: translateY(0);
             }
         }
-        
+
         .hero h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
@@ -343,12 +342,12 @@
             animation: textShimmer 4s ease-in-out infinite;
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
-        
+
         @keyframes textShimmer {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        
+
         .hero p {
             font-size: clamp(1.1rem, 3vw, 1.6rem);
             color: rgba(255, 255, 255, 0.85);
@@ -356,14 +355,14 @@
             line-height: 1.7;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
-        
+
         /* Team Section */
         .section {
             padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 40px);
             max-width: 1300px;
             margin: 0 auto;
         }
-        
+
         .section-title {
             font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 800;
@@ -379,19 +378,19 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .section-title.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 45vw, 400px), 1fr));
             gap: clamp(20px, 5vw, 40px);
             margin-top: clamp(30px, 6vw, 60px);
         }
-        
+
         .member-card {
             padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 40px);
             text-align: center;
@@ -402,12 +401,12 @@
             overflow: hidden;
             border-radius: 30px;
         }
-        
+
         .member-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .member-card::before {
             content: '';
             position: absolute;
@@ -425,23 +424,23 @@
             pointer-events: none;
             z-index: 0;
         }
-        
+
         .member-card:hover::before {
             opacity: 1;
         }
-        
+
         .member-card > * {
             position: relative;
             z-index: 2;
         }
-        
+
         .member-card:hover {
             transform: translateY(-15px) scale(1.03);
             box-shadow:
                 0 30px 60px rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
-        
+
         .member-avatar {
             width: clamp(80px, 15vw, 120px);
             height: clamp(80px, 15vw, 120px);
@@ -453,12 +452,12 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
         }
-        
+
         .member-card:hover .member-avatar {
             transform: scale(1.1) rotate(5deg);
             box-shadow: 0 12px 40px rgba(255, 215, 0, 0.3);
         }
-        
+
         .member-name {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
@@ -466,14 +465,14 @@
             margin-bottom: clamp(10px, 2vw, 15px);
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
-        
+
         .member-role {
             font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: clamp(15px, 3vw, 25px);
             font-weight: 500;
         }
-        
+
         .member-description {
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.7;
@@ -481,14 +480,14 @@
             margin-bottom: clamp(20px, 4vw, 35px);
             text-align: left;
         }
-        
+
         .member-buttons {
             display: flex;
             gap: clamp(10px, 2vw, 15px);
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .member-btn {
             display: inline-block;
             padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 25px);
@@ -505,24 +504,24 @@
             overflow: hidden;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
-        
+
         .member-btn:hover {
             transform: translateY(-3px) scale(1.05);
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
-        
+
         .member-btn.primary {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
-        
+
         .member-btn.primary:hover {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0.2) 100%);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
         }
-        
-        /* Cursor personalizado */
+
+        /* Cursor personalizado melhorado */
         .cursor-ball {
             position: fixed;
             width: 22px;
@@ -539,7 +538,7 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(8px);
         }
-        
+
         .cursor-ball.hover {
             width: 45px;
             height: 45px;
@@ -547,8 +546,15 @@
             border: 2px solid rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(15px);
         }
-        
-        /* Mouse Trails */
+
+        .cursor-ball.click {
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(10, 10, 10, 0.9);
+        }
+
+        /* Mouse Trails Melhorados */
         .mouse-trail {
             position: fixed;
             width: 16px;
@@ -564,23 +570,23 @@
             transition: opacity 0.15s ease-out;
             backdrop-filter: blur(3px);
         }
-        
+
         .mouse-trail.trail-1 {
             opacity: 0.5;
         }
-        
+
         .mouse-trail.trail-2 {
             opacity: 0.45;
         }
-        
+
         .mouse-trail.trail-3 {
             opacity: 0.4;
         }
-        
+
         .mouse-trail.trail-4 {
             opacity: 0.35;
         }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
             .navbar {
@@ -591,43 +597,51 @@
                 padding: 15px 20px;
                 transform: none;
             }
-            
+
             .nav-content {
                 justify-content: space-between;
                 gap: 15px;
             }
-            
-            
+
+            .hamburger {
+                display: flex;
+            }
+
+            .cursor-ball,
+            .mouse-trail {
+                display: none !important;
+            }
+
             .hero {
                 min-height: 80vh;
                 padding: 20px;
             }
-            
+
             .section {
                 padding: 40px 15px;
             }
-            
+
             .team-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
+
             .member-card {
                 padding: 30px 20px;
             }
-            
+
             .member-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .member-btn {
                 width: 80%;
                 max-width: 200px;
                 text-align: center;
             }
         }
-        
+
         @media (min-width: 769px) and (max-width: 1024px) {
             .navbar {
                 top: 15px;
@@ -635,32 +649,32 @@
                 max-width: none;
                 padding: 15px 30px;
             }
-            
+
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (min-width: 769px) {
             .hamburger {
                 display: none;
             }
-            
+
             .mobile-menu {
                 display: none;
             }
         }
-        
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg,
                 rgba(255, 255, 255, 0.3) 0%,
@@ -669,7 +683,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg,
                 rgba(255, 255, 255, 0.4) 0%,
@@ -678,6 +692,9 @@
     </style>
 </head>
 <body>
+    <!-- Cursor Ball -->
+    <div class="cursor-ball" id="cursorBall"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
@@ -690,7 +707,7 @@
             </button>
         </div>
     </nav>
-    
+
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
@@ -698,7 +715,7 @@
             <a href="https://labombo.rf.gd/" class="back-button">← Voltar ao Site Principal</a>
         </div>
     </div>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -706,7 +723,7 @@
             <p>Conheça os desenvolvedores por trás do projeto La Bombonera</p>
         </div>
     </section>
-    
+
     <!-- Team Section -->
     <section class="section">
         <h2 class="section-title">Membros da Equipe</h2>
@@ -728,7 +745,7 @@
                     <a href="https://github.com/AgnaldoScaion" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
-            
+
             <!-- Augusto -->
             <div class="member-card glass">
                 <div class="member-avatar" style="background-image: url('https://i.ibb.co/xKz9gh49/1757539517302.jpg');"></div>
@@ -747,7 +764,7 @@
                     <a href="https://github.com/augusto8sena" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
-            
+
             <!-- Italo -->
             <div class="member-card glass">
                 <div class="member-avatar" style="background-image: url('https://i.ibb.co/rf6CznQW/1757072889235.png');"></div>
@@ -766,7 +783,7 @@
                     <a href="https://github.com/nascimentoI" target="_blank" class="member-btn">GitHub</a>
                 </div>
             </div>
-            
+
             <!-- Miguel Z. -->
             <div class="member-card glass">
                 <div class="member-avatar" style="background-image: url('https://i.ibb.co/7xmJXKR3/1758745915448.png');"></div>
@@ -788,51 +805,65 @@
             </div>
         </div>
     </section>
-    
+
     <script>
+        // Performance optimization: Use passive event listeners
+        const passiveOptions = { passive: true };
+
+        // Throttle function for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
         // Hamburger menu functionality
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
+
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
-        
-        // Close mobile menu when clicking on a link
+
+        // Close mobile menu
+        const closeMobileMenu = () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
         document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', closeMobileMenu);
         });
-        
-        // Close mobile menu when clicking outside
+
         document.addEventListener('click', (e) => {
             if (mobileMenu.classList.contains('active') && !e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMobileMenu();
             }
         });
-        
-        // Close mobile menu on escape key
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMobileMenu();
             }
         });
-        
+
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -840,52 +871,28 @@
                 }
             });
         }, observerOptions);
-        
-        // Observe elements for animation
+
         document.querySelectorAll('.section-title, .member-card').forEach(el => {
             observer.observe(el);
         });
-        
-        // Mouse effect nos cards
-        document.querySelectorAll('.member-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.setProperty('--mouse-x', '0px');
-                card.style.setProperty('--mouse-y', '0px');
-            });
-            
-            // Inicializar variáveis CSS
-            card.style.setProperty('--mouse-x', '0px');
-            card.style.setProperty('--mouse-y', '0px');
-        });
-        
-        // Stagger animation para cards
-        const cards = document.querySelectorAll('.member-card');
-        cards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.2}s`;
-        });
-        
-        // Mouse Trails System
+
+        // Mouse Trails System with delta time for 144 FPS compatibility
         class MouseTrails {
             constructor() {
                 this.trails = [];
-                this.mouseX = 0;
-                this.mouseY = 0;
-                this.trailCount = 8;
+                this.cursorBall = document.getElementById('cursorBall');
+                this.targetX = 0;
+                this.targetY = 0;
+                this.cursorX = 0;
+                this.cursorY = 0;
+                this.lastTime = 0;
+                this.trailCount = 12;
                 this.init();
             }
-            
+
             init() {
-                // Verificar se é dispositivo móvel
                 if (window.innerWidth <= 768) return;
-                
+
                 for (let i = 0; i < this.trailCount; i++) {
                     const trail = document.createElement('div');
                     trail.className = `mouse-trail trail-${(i % 4) + 1}`;
@@ -893,91 +900,172 @@
                     this.trails.push({
                         element: trail,
                         x: 0,
-                        y: 0
+                        y: 0,
+                        baseEase: 0.4 + (i * 0.06)
                     });
                 }
-                
+
                 document.addEventListener('mousemove', (e) => {
-                    this.mouseX = e.clientX;
-                    this.mouseY = e.clientY;
-                });
-                
-                this.animate();
+                    this.targetX = e.clientX;
+                    this.targetY = e.clientY;
+                }, passiveOptions);
+
+                this.animate(performance.now());
             }
-            
-            animate() {
+
+            animate(time) {
                 if (window.innerWidth <= 768) return;
-                
-                this.trails.forEach((trail, index) => {
-                    const speed = 0.5 + (index * 0.05);
-                    trail.x += (this.mouseX - trail.x) * speed;
-                    trail.y += (this.mouseY - trail.y) * speed;
-                    trail.element.style.left = trail.x + 'px';
-                    trail.element.style.top = trail.y + 'px';
+
+                if (!this.lastTime) this.lastTime = time;
+                const delta = (time - this.lastTime) / 1000;
+                this.lastTime = time;
+
+                // Cursor lerp (normalized to 60fps base for consistency)
+                const cursorEase = 0.8;
+                const cursorFactor = 1 - Math.pow(1 - cursorEase, delta * 60);
+                this.cursorX += (this.targetX - this.cursorX) * cursorFactor;
+                this.cursorY += (this.targetY - this.cursorY) * cursorFactor;
+                this.cursorBall.style.left = `${this.cursorX}px`;
+                this.cursorBall.style.top = `${this.cursorY}px`;
+
+                // Trails lerp
+                this.trails.forEach(trail => {
+                    const factor = 1 - Math.pow(1 - trail.baseEase, delta * 60);
+                    trail.x += (this.targetX - trail.x) * factor;
+                    trail.y += (this.targetY - trail.y) * factor;
+                    trail.element.style.left = `${trail.x}px`;
+                    trail.element.style.top = `${trail.y}px`;
                 });
-                
-                requestAnimationFrame(() => this.animate());
+
+                requestAnimationFrame((time) => this.animate(time));
             }
         }
-        new MouseTrails();
-        // Cursor personalizado
-        const cursorBall = document.createElement('div');
-        cursorBall.className = 'cursor-ball';
-        document.body.appendChild(cursorBall);
-        const speed = 0.2;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-        function animate() {
-            ballX += (mouseX - ballX) * speed;
-            ballY += (mouseY - ballY) * speed;
-            cursorBall.style.left = ballX + 'px';
-            cursorBall.style.top = ballY + 'px';
-            requestAnimationFrame(animate);
+
+        // Initialize mouse trails only once
+        if (!window._mouseTrailsInstance && window.innerWidth > 768) {
+            window._mouseTrailsInstance = new MouseTrails();
         }
-        animate();
-        // Hover effects para cursor
-        document.querySelectorAll('a, button, .member-card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursorBall.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursorBall.classList.remove('hover'));
+
+        // Hover and click effects for cursor
+        document.addEventListener('mousedown', () => {
+            const cursorBall = document.getElementById('cursorBall');
+            cursorBall.classList.add('click');
+        }, passiveOptions);
+
+        document.addEventListener('mouseup', () => {
+            const cursorBall = document.getElementById('cursorBall');
+            cursorBall.classList.remove('click');
+        }, passiveOptions);
+
+        document.querySelectorAll('a, button, .member-card, .member-btn').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                const cursorBall = document.getElementById('cursorBall');
+                cursorBall.classList.add('hover');
+            }, passiveOptions);
+            element.addEventListener('mouseleave', () => {
+                const cursorBall = document.getElementById('cursorBall');
+                cursorBall.classList.remove('hover');
+            }, passiveOptions);
+        });
+
+        // Card hover effects (desktop only)
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 768) {
+            let isMouseMoving = false;
+            let mouseTimeout;
+
+            const handleCardMouseMove = throttle((e, card) => {
+                if (!isMouseMoving) return;
+
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const rotateX = (y - centerY) / 30;
+                const rotateY = (centerX - x) / 30;
+
+                card.style.transform = `
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-15px)
+                    scale(1.03)
+                `;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            }, 16); // ~60fps
+
+            document.querySelectorAll('.member-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    isMouseMoving = true;
+                    card.style.transition = 'transform 0.2s ease';
+                    clearTimeout(mouseTimeout);
+                });
+
+                card.addEventListener('mousemove', (e) => {
+                    handleCardMouseMove(e, card);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    isMouseMoving = false;
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                    card.style.transition = 'all 0.3s ease';
+                    card.style.setProperty('--mouse-x', '0px');
+                    card.style.setProperty('--mouse-y', '0px');
+
+                    mouseTimeout = setTimeout(() => {
+                        isMouseMoving = false;
+                    }, 100);
+                });
+            });
+        }
+
+        // Stagger animation for cards
+        const cards = document.querySelectorAll('.member-card');
+        cards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.2}s`;
         });
 
         // Ripple effect for buttons
+        const createRipple = (element, e) => {
+            const ripple = document.createElement('span');
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height) * 1.2;
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: rippleEffect 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+                pointer-events: none;
+                z-index: 1000;
+            `;
+
+            element.style.position = 'relative';
+            element.style.overflow = 'hidden';
+            element.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        };
+
         document.querySelectorAll('.member-btn').forEach(button => {
-            button.addEventListener('click', function (e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height) * 1.2;
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-                    pointer-events: none;
-                    z-index: 1000;
-                `;
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
+            button.addEventListener('click', function(e) {
+                createRipple(this, e);
             });
         });
-        
+
         // Add ripple animation keyframes
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes ripple {
+            @keyframes rippleEffect {
                 to {
                     transform: scale(2);
                     opacity: 0;
@@ -985,11 +1073,25 @@
             }
         `;
         document.head.appendChild(style);
-        
-        // Prevent context menu and text selection to hide cursor completely
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('dragstart', e => e.preventDefault());
+
+        // Prevent context menu, text selection, and dragging
+        document.addEventListener('contextmenu', e => e.preventDefault(), passiveOptions);
+        document.addEventListener('selectstart', e => e.preventDefault(), passiveOptions);
+        document.addEventListener('dragstart', e => e.preventDefault(), passiveOptions);
+
+        // Clean up on resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth <= 768 && window._mouseTrailsInstance) {
+                    window._mouseTrailsInstance.trails.forEach(trail => trail.element.remove());
+                    window._mouseTrailsInstance = null;
+                } else if (window.innerWidth > 768 && !window._mouseTrailsInstance) {
+                    window._mouseTrailsInstance = new MouseTrails();
+                }
+            }, 250);
+        }, passiveOptions);
     </script>
 </body>
 </html>
