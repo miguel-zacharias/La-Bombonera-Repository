@@ -16,126 +16,196 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 30%, #404040 70%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 20%, #2d2d2d 40%, #404040 70%, #2d2d2d 90%, #1a1a1a 100%);
             background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            animation: gradientShift 20s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
             cursor: none !important;
         }
 
+        body,
+        body *,
+        html {
+            cursor: none !important;
+        }
+
+        /* Background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.05), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.03), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.07), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.04), transparent);
+            background-repeat: repeat;
+            background-size: 150px 100px;
+            animation: sparkle 15s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-150px); }
+        }
+
         @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Liquid Glass Effect */
+        /* Glass effect */
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
             box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 12px 40px rgba(0, 0, 0, 0.35),
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
         }
 
-        /* Navigation - CORRIGIDO */
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.02) 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: auto;
-            max-width: 800px;
-            padding: 15px 40px;
+            width: 90%;
+            max-width: 900px;
+            padding: 18px 45px;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(40px) saturate(200%) brightness(120%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(120%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                0 4px 16px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                0 12px 48px rgba(0, 0, 0, 0.5),
+                0 6px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.03) 50%,
+                rgba(255, 255, 255, 0.01) 100%);
+            border-radius: inherit;
+            pointer-events: none;
         }
 
         .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(35px) saturate(200%);
-            -webkit-backdrop-filter: blur(35px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(50px) saturate(220%) brightness(130%);
+            -webkit-backdrop-filter: blur(50px) saturate(220%) brightness(130%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow:
-                0 16px 48px rgba(0, 0, 0, 0.5),
-                0 8px 24px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transform: translateX(-50%) scale(0.98);
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 40px;
+            gap: 45px;
+            position: relative;
+            z-index: 2;
         }
 
         .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            font-weight: 800;
             color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s ease;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+            position: relative;
         }
 
         .logo::before {
             content: '';
             display: inline-block;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             background: url('https://i.ibb.co/JjbTT10j/Chat-GPT-Image-24-de-set-de-2025-14-25-31.png') no-repeat center center;
             background-size: contain;
             vertical-align: middle;
             margin-right: 8px;
+            transition: all 0.3s ease;
         }
 
         .logo:hover {
             transform: scale(1.05);
-            text-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
         }
 
+        .logo:hover::before {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        /* Navigation Links */
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 6px;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
         }
 
         .nav-links a {
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-            padding: 10px 18px;
-            border-radius: 25px;
+            font-weight: 600;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            transition: all 0.3s ease;
+            padding: 12px 20px;
+            border-radius: 30px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .nav-links a::before {
@@ -145,11 +215,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.05) 100%);
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-            border-radius: 25px;
+            transition: transform 0.3s ease;
+            border-radius: 30px;
             z-index: -1;
         }
 
@@ -160,32 +232,121 @@
 
         .nav-links a:hover {
             color: white;
-            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+            text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 24px;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 15px 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
+            padding: clamp(20px, 5vw, 40px);
             position: relative;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 90%;
             animation: fadeInUp 1s ease-out;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(40px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -193,143 +354,118 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 900;
             color: white;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffffff, #c0c0c0, #ffffff);
-            background-size: 200% 200%;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            background: linear-gradient(135deg, #ffffff, #e0e0e0, #ffffff, #f0f0f0);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textShimmer 3s ease-in-out infinite;
+            animation: textShimmer 4s ease-in-out infinite;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
         }
 
         @keyframes textShimmer {
-
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero p {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 40px;
-            line-height: 1.6;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: clamp(20px, 5vw, 40px);
+            line-height: 1.7;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button {
             display: inline-block;
-            padding: 16px 32px;
-            background: rgba(255, 255, 255, 0.08);
+            padding: clamp(12px, 3vw, 18px) clamp(24px, 5vw, 36px);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             text-decoration: none;
-            border-radius: 16px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             position: relative;
             overflow: hidden;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .cta-button:hover {
-            transform: translateY(-4px) scale(1.05);
+            transform: translateY(-3px) scale(1.02);
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            transition: all 0.5s ease;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-        }
-
-        .cta-button:hover::after {
-            width: 300px;
-            height: 300px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         /* Floating Elements */
         .floating-element {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            animation: float 6s ease-in-out infinite;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            animation: float 8s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .floating-element:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
+            width: clamp(60px, 10vw, 100px);
+            height: clamp(60px, 10vw, 100px);
+            top: 15%;
+            left: 8%;
             animation-delay: 0s;
         }
 
         .floating-element:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
+            width: clamp(80px, 15vw, 140px);
+            height: clamp(80px, 15vw, 140px);
+            top: 55%;
+            right: 12%;
+            animation-delay: 2.5s;
         }
 
         .floating-element:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
+            width: clamp(50px, 8vw, 80px);
+            height: clamp(50px, 8vw, 80px);
+            bottom: 18%;
+            left: 18%;
+            animation-delay: 5s;
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            33% {
-                transform: translateY(-20px) rotate(120deg);
-            }
-
-            66% {
-                transform: translateY(-10px) rotate(240deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(90deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+            75% { transform: translateY(-20px) rotate(270deg); }
         }
 
         /* Content Sections */
         .section {
-            padding: 100px 20px;
-            max-width: 1200px;
+            padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 40px);
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 800;
             text-align: center;
             color: white;
-            margin-bottom: 60px;
+            margin-bottom: clamp(40px, 8vw, 60px);
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-title.visible {
@@ -339,21 +475,102 @@
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 40vw, 300px), 1fr));
+            gap: clamp(20px, 5vw, 30px);
+            margin-top: clamp(40px, 8vw, 50px);
+        }
+
+        /* Team Card */
+        .team-card {
+            grid-column: 1 / -1;
+            max-width: 90%;
+            margin: 0 auto clamp(20px, 5vw, 30px) auto;
+            padding: clamp(20px, 5vw, 40px);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.12) 100%);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.03) 50%,
+                transparent 60%);
+            animation: shimmer 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+        }
+
+        .team-icon {
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            margin-bottom: clamp(15px, 3vw, 20px);
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 6px 12px rgba(255, 215, 0, 0.3));
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: clamp(15px, 3vw, 25px);
+            margin-top: clamp(20px, 4vw, 25px);
+            flex-wrap: wrap;
+        }
+
+        .member {
+            padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        }
+
+        .member:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .card {
-            padding: 40px 30px;
+            padding: clamp(20px, 5vw, 35px);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(40px);
             position: relative;
             overflow: hidden;
-            transform-style: preserve-3d;
-            border-radius: 20px;
+            border-radius: 24px;
+            will-change: transform;
         }
 
         .card.visible {
@@ -361,117 +578,39 @@
             transform: translateY(0);
         }
 
-        /* Efeito de luz que segue o mouse */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(500px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
-                    rgba(255, 255, 255, 0.08) 0%,
-                    rgba(255, 255, 255, 0.04) 30%,
-                    transparent 70%);
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            border-radius: 20px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(300px circle at var(--mouse-x, 0%) var(--mouse-y, 0%),
-                    rgba(255, 255, 255, 0.5) 0%,
-                    rgba(255, 255, 255, 0.3) 15%,
-                    rgba(255, 255, 255, 0.15) 30%,
-                    transparent 60%);
-            opacity: 0;
-            transition: opacity 0.1s ease;
-            border-radius: 20px;
-            pointer-events: none;
-            z-index: 1;
-            mix-blend-mode: overlay;
-        }
-
-        .card:hover::after {
-            opacity: 1;
-        }
-
-        .card>* {
-            position: relative;
-            z-index: 2;
-        }
-
         .card:hover {
-            transform: translateY(-12px) scale(1.04);
+            transform: translateY(-8px) scale(1.02);
             box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.15);
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
         .card-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: clamp(3rem, 8vw, 4rem);
+            margin-bottom: clamp(15px, 3vw, 20px);
             display: inline-block;
-            transition: all 0.4s ease;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 300;
         }
 
-        .card:hover .card-icon {
-            animation: gentle-pulse 2s ease-in-out infinite;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes gentle-pulse {
-
-            0%,
-            100% {
-                transform: scale(1.15);
-                filter: drop-shadow(0 8px 16px rgba(0, 255, 255, 0.2)) brightness(1.3);
-            }
-
-            50% {
-                transform: scale(1.2);
-                filter: drop-shadow(0 10px 20px rgba(0, 255, 255, 0.3)) brightness(1.4);
-            }
-        }
-
         .card h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: 700;
             color: white;
-            margin-bottom: 15px;
+            margin-bottom: clamp(12px, 2vw, 16px);
             transition: all 0.3s ease;
-        }
-
-        .card:hover h3 {
-            color: rgba(255, 255, 255, 1);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .card p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.3s ease;
         }
 
@@ -479,93 +618,132 @@
             color: rgba(255, 255, 255, 0.95);
         }
 
-        /* Cursor personalizado - CORRIGIDO */
+        /* Cursor personalizado melhorado */
         .cursor-ball {
             position: fixed;
-            width: 20px;
-            height: 20px;
-            background: rgba(17, 17, 17, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            width: 22px;
+            height: 22px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
+                0 6px 16px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
         }
 
-        /* Hover states para cursor */
         .cursor-ball.hover {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
         }
 
         .cursor-ball.click {
-            width: 16px;
-            height: 16px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid rgba(17, 17, 17, 0.8);
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(10, 10, 10, 0.9);
         }
 
+        /* Mouse Trails Melhorados */
+        .mouse-trail {
+            position: fixed;
+            width: 16px;
+            height: 16px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.15s ease-out;
+            backdrop-filter: blur(3px);
+        }
+
+        .mouse-trail.trail-1 {
+            opacity: 0.5;
+        }
+
+        .mouse-trail.trail-2 {
+            opacity: 0.45;
+        }
+
+        .mouse-trail.trail-3 {
+            opacity: 0.4;
+        }
+
+        .mouse-trail.trail-4 {
+            opacity: 0.35;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
             .navbar {
-                top: 15px;
-                max-width: 90%;
-                padding: 12px 20px;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                width: calc(100% - 20px);
+                padding: 15px 20px;
+                transform: none;
             }
 
             .nav-content {
+                justify-content: space-between;
                 gap: 20px;
             }
 
             .nav-links {
-                gap: 4px;
+                display: none;
             }
 
-            .nav-links a {
-                font-size: 0.8rem;
-                padding: 8px 14px;
+            .hamburger {
+                display: flex;
             }
 
-            .logo {
-                font-size: 1.1rem;
-            }
-
-            .logo::before {
-                font-size: 1.2rem;
+            .cursor-ball,
+            .mouse-trail {
+                display: none !important;
             }
 
             .hero {
+                min-height: 80vh;
                 padding: 20px;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
+            .section {
+                padding: 40px 15px;
             }
 
             .cards-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
             }
 
-            .card {
-                padding: 30px 20px;
+            .floating-element {
+                display: none;
+            }
+
+            .card:hover,
+            .team-card:hover {
+                transform: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: none;
             }
         }
 
@@ -580,53 +758,25 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.1) 100%);
             border-radius: 10px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Mouse Trails */
-        .mouse-trail {
-            position: fixed;
-            width: 14px;
-            height: 14px;
-            background: #111;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            opacity: 0.5;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-            transition: opacity 0.1s ease-out;
-        }
-
-        .mouse-trail.trail-1 { opacity: 0.45; }
-        .mouse-trail.trail-2 { opacity: 0.4; }
-        .mouse-trail.trail-3 { opacity: 0.35; }
-        .mouse-trail.trail-4 { opacity: 0.3; }
-
-        .cursor-ball {
-            position: fixed;
-            width: 16px;
-            height: 16px;
-            background: #111;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: background 0.2s, border 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.2) 100%);
         }
     </style>
 </head>
 
 <body>
+    <!-- Cursor Ball -->
+    <div class="cursor-ball" id="cursorBall"></div>
+
     <!-- Floating Elements -->
     <div class="floating-element"></div>
     <div class="floating-element"></div>
@@ -642,8 +792,23 @@
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
@@ -657,6 +822,26 @@
     <!-- About Section -->
     <section class="section" id="sobre">
         <h2 class="section-title">Por que escolher o Pico 2W?</h2>
+        <!-- Team Card -->
+        <div class="team-card glass">
+            <div class="team-icon">👥</div>
+            <h3 style="font-size: clamp(1.8rem, 4vw, 2.2rem); margin-bottom: clamp(15px, 3vw, 20px); color: white; text-shadow: 0 4px 16px rgba(0,0,0,0.3);">
+                Nosso Grupo</h3>
+            <p style="font-size: clamp(1rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.9); margin-bottom: clamp(15px, 3vw, 20px); text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                Conheça a equipe por trás deste projeto inovador com Raspberry Pi Pico 2W
+            </p>
+            <div class="team-members">
+                <div class="member">Agnaldo</div>
+                <div class="member">Augusto</div>
+                <div class="member">Italo</div>
+                <div class="member">Miguel Z.</div>
+            </div>
+            <div style="margin-top: clamp(20px, 4vw, 25px);">
+                <a href="https://labomba.rf.gd" class="cta-button" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%); border: 1px solid rgba(255, 215, 0, 0.3);">
+                    Conheça Mais Sobre Nós
+                </a>
+            </div>
+        </div>
         <div class="cards-grid">
             <div class="card glass">
                 <div class="card-icon">◐</div>
@@ -682,23 +867,8 @@
         <div class="cards-grid">
             <div class="card glass">
                 <div class="card-icon">◈</div>
-                <h3>Monitor IoT</h3>
-                <p>Sistema de monitoramento de temperatura, umidade e luminosidade em tempo real</p>
-            </div>
-            <div class="card glass">
-                <div class="card-icon">◆</div>
-                <h3>Casa Inteligente</h3>
-                <p>Automação residencial completa com controle de luzes e dispositivos</p>
-            </div>
-            <div class="card glass">
-                <div class="card-icon">◉</div>
-                <h3>LED Controller</h3>
-                <p>Controlador de LED RGB via web com efeitos personalizados</p>
-            </div>
-            <div class="card glass">
-                <div class="card-icon">◎</div>
-                <h3>Estação Meteorológica</h3>
-                <p>Weather station inteligente com dados enviados para a nuvem</p>
+                <h3>Projeto Raspberry</h3>
+                <p>Uma esteira com todo seu processo automatizado, o finalizador (carrinho) contará com um sensor infravermelho PIR, que irá enviar um sinal para interromper a entrega na esteira, com isso o carrinho terá que ser capaz de descarregar seus produtos.</p>
             </div>
         </div>
     </section>
@@ -707,22 +877,84 @@
     <section class="section" id="contato">
         <h2 class="section-title">Junte-se à Comunidade</h2>
         <div style="text-align: center;">
-            <div class="card glass" style="max-width: 600px; margin: 0 auto;">
-                <div class="card-shimmer"></div>
+            <div class="card glass" style="max-width: 90%; margin: 0 auto;">
                 <div class="card-icon">◈</div>
                 <h3>La Bombonera Community</h3>
                 <p>Conecte-se com outros makers, compartilhe projetos e aprenda com nossa comunidade vibrante!</p>
                 <br>
-                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <a href="#" class="cta-button">GitHub</a>
-                    <a href="#" class="cta-button">Discord</a>
-                    <a href="#" class="cta-button">YouTube</a>
+                <div style="display: flex; justify-content: center; gap: clamp(15px, 3vw, 20px); flex-wrap: wrap;">
+                    <a href="https://github.com/miguel-zacharias/La-Bombonera-Repository" target="_blank" class="cta-button">GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
+        // Performance optimization: Use passive event listeners where possible
+        const passiveOptions = { passive: true };
+        
+        // Debounce function for performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Throttle function for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu functions
+        const closeMobileMenu = () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && !e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -740,7 +972,7 @@
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -30px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -752,164 +984,223 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.section-title, .card').forEach(el => {
+        document.querySelectorAll('.section-title, .card, .team-card').forEach(el => {
             observer.observe(el);
         });
 
-        // Parallax effect for floating elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-
-            document.querySelectorAll('.floating-element').forEach((el, index) => {
-                const speed = (index + 1) * 0.3;
-                el.style.transform = `translate3d(0, ${rate * speed}px, 0) rotate(${scrolled * 0.1}deg)`;
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
+        // Optimized navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        const handleScroll = throttle(() => {
+            const scrollTop = window.pageYOffset;
+            if (scrollTop > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
+        }, 16); // ~60fps
 
-        // Efeito de seguir o mouse nos cards - mecânica exata do Conectividade Total
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
+        window.addEventListener('scroll', handleScroll, passiveOptions);
+
+        // Reduced sensitivity card hover effects (desktop only)
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 768) {
+            let isMouseMoving = false;
+            let mouseTimeout;
+
+            const handleCardMouseMove = throttle((e, card) => {
+                if (!isMouseMoving) return;
+                
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                // Posição exata do mouse em pixels
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-
-                // Efeito de inclinação com maior sensibilidade
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Reduced sensitivity: divided by 30 instead of 12
+                const rotateX = (y - centerY) / 30;
+                const rotateY = (centerX - x) / 30;
+                
                 card.style.transform = `
-                    perspective(1000px) 
-                    rotateX(${rotateX}deg) 
-                    rotateY(${rotateY}deg) 
-                    translateY(-12px) 
-                    scale(1.04)
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-8px)
+                    scale(1.02)
                 `;
+            }, 16);
+
+            document.querySelectorAll('.card, .team-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    isMouseMoving = true;
+                    card.style.transition = 'transform 0.2s ease';
+                    clearTimeout(mouseTimeout);
+                });
+
+                card.addEventListener('mousemove', (e) => {
+                    handleCardMouseMove(e, card);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    isMouseMoving = false;
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+                    card.style.transition = 'all 0.3s ease';
+                    
+                    // Delay to prevent flickering
+                    mouseTimeout = setTimeout(() => {
+                        isMouseMoving = false;
+                    }, 100);
+                });
             });
+        }
 
-            card.addEventListener('mouseenter', () => {
-                // Iniciar o efeito com transição mais rápida
-                card.style.transition = 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            });
-
-            card.addEventListener('mouseleave', () => {
-                // Reset suave da posição
-                card.style.setProperty('--mouse-x', '0px');
-                card.style.setProperty('--mouse-y', '0px');
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
-                card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            });
-
-            // Inicializar variáveis CSS
-            card.style.setProperty('--mouse-x', '0px');
-            card.style.setProperty('--mouse-y', '0px');
-        });
-
-        // Add stagger animation to cards
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Mouse Trails System - 5 rastros, taxa de atualização altíssima (~144 FPS)
+        // Mouse Trails System with delta time for consistent speed
         class MouseTrails {
             constructor() {
                 this.trails = [];
-                this.mouseX = 0;
-                this.mouseY = 0;
-                this.trailCount = 15;
+                this.cursorBall = document.getElementById('cursorBall');
+                this.targetX = 0;
+                this.targetY = 0;
+                this.cursorX = 0;
+                this.cursorY = 0;
+                this.lastTime = 0;
+                this.trailCount = 12;
                 this.init();
             }
+
             init() {
-                // Create trail elements
+                if (window.innerWidth <= 768) return;
+
                 for (let i = 0; i < this.trailCount; i++) {
                     const trail = document.createElement('div');
                     trail.className = `mouse-trail trail-${(i % 4) + 1}`;
                     document.body.appendChild(trail);
-
                     this.trails.push({
                         element: trail,
                         x: 0,
                         y: 0,
-                        delay: 0,
-                        lastUpdate: 0
+                        baseEase: 0.4 + (i * 0.06)
                     });
                 }
 
-                // Mouse move listener
                 document.addEventListener('mousemove', (e) => {
-                    this.mouseX = e.clientX;
-                    this.mouseY = e.clientY;
+                    this.targetX = e.clientX;
+                    this.targetY = e.clientY;
                 });
 
-                // Start animation loop
-                this.animate();
+                this.animate(performance.now());
             }
 
-            animate() {
-                this.trails.forEach((trail, index) => {
-                    // Atualiza a cada frame (144 FPS)
-                    const speed = 0.35 + (index * 0.08); // Rastros muito rápidos
-                    trail.x += (this.mouseX - trail.x) * speed;
-                    trail.y += (this.mouseY - trail.y) * speed;
-                    trail.element.style.left = trail.x + 'px';
-                    trail.element.style.top = trail.y + 'px';
+            animate(time) {
+                if (window.innerWidth <= 768) return;
+
+                if (!this.lastTime) this.lastTime = time;
+                const delta = (time - this.lastTime) / 1000;
+                this.lastTime = time;
+
+                // Cursor lerp (with delta normalization to 60fps base)
+                const cursorEase = 0.8; // Base ease for cursor
+                const cursorFactor = 1 - Math.pow(1 - cursorEase, delta * 60);
+                this.cursorX += (this.targetX - this.cursorX) * cursorFactor;
+                this.cursorY += (this.targetY - this.cursorY) * cursorFactor;
+                this.cursorBall.style.left = `${this.cursorX}px`;
+                this.cursorBall.style.top = `${this.cursorY}px`;
+
+                // Trails lerp
+                this.trails.forEach(trail => {
+                    const factor = 1 - Math.pow(1 - trail.baseEase, delta * 60);
+                    trail.x += (this.targetX - trail.x) * factor;
+                    trail.y += (this.targetY - trail.y) * factor;
+                    trail.element.style.left = `${trail.x}px`;
+                    trail.element.style.top = `${trail.y}px`;
                 });
-                requestAnimationFrame(() => this.animate());
+
+                requestAnimationFrame((time) => this.animate(time));
             }
         }
-        if (!window._mouseTrailsInstance) {
+
+        // Initialize mouse trails only once
+        if (!window._mouseTrailsInstance && window.innerWidth > 768) {
             window._mouseTrailsInstance = new MouseTrails();
         }
 
+        // Hover and click effects for cursor
+        document.addEventListener('mousedown', () => {
+            const cursorBall = document.getElementById('cursorBall');
+            cursorBall.classList.add('click');
+        });
+
+        document.addEventListener('mouseup', () => {
+            const cursorBall = document.getElementById('cursorBall');
+            cursorBall.classList.remove('click');
+        });
+
+        document.querySelectorAll('a, button, .cta-button, .member').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                const cursorBall = document.getElementById('cursorBall');
+                cursorBall.classList.add('hover');
+            });
+            element.addEventListener('mouseleave', () => {
+                const cursorBall = document.getElementById('cursorBall');
+                cursorBall.classList.remove('hover');
+            });
+        });
+
+        // Clean up on resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth <= 768 && window._mouseTrailsInstance) {
+                    // Remove trails
+                    window._mouseTrailsInstance.trails.forEach(trail => trail.element.remove());
+                    window._mouseTrailsInstance = null;
+                } else if (window.innerWidth > 768 && !window._mouseTrailsInstance) {
+                    window._mouseTrailsInstance = new MouseTrails();
+                }
+            }, 250);
+        }, passiveOptions);
+
+        // Optimized ripple effect
+        const createRipple = (element, e) => {
+            const ripple = document.createElement('span');
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: rippleEffect 0.5s ease-out;
+                pointer-events: none;
+                z-index: 1000;
+            `;
+
+            element.style.position = 'relative';
+            element.style.overflow = 'hidden';
+            element.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 500);
+        };
+
         // Add ripple effect to buttons
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function (e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    pointer-events: none;
-                `;
-
-                this.appendChild(ripple);
-
-                setTimeout(() => ripple.remove(), 600);
+        document.querySelectorAll('.cta-button, .member').forEach(button => {
+            button.addEventListener('click', function(e) {
+                createRipple(this, e);
             });
         });
 
         // Add CSS for ripple animation
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes ripple {
+            @keyframes rippleEffect {
                 to {
                     transform: scale(2);
                     opacity: 0;
@@ -918,16 +1209,16 @@
         `;
         document.head.appendChild(style);
 
-        // Adiciona a bola do cursor
-        if (!document.querySelector('.cursor-ball')) {
-            const cursorBall = document.createElement('div');
-            cursorBall.className = 'cursor-ball';
-            document.body.appendChild(cursorBall);
-            window.addEventListener('mousemove', (e) => {
-                cursorBall.style.left = e.clientX + 'px';
-                cursorBall.style.top = e.clientY + 'px';
-            });
-        }
+        // Stagger animation for cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Prevent context menu and text selection
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
     </script>
 </body>
 
