@@ -1,0 +1,1 @@
+Uma esteira com todo seu processo automatizado, o finalizador (carrinho) contará com um sensor infravermelho PIR, que irá enviar um sinal para interromper a entrega na esteira, com isso o carrinho terá que ser capaz de descarregar seus produtos.
