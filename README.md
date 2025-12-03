@@ -5,101 +5,140 @@
 
 ---
 
-## 🌐 Website
-**Visit our official webpage:** [La Bombonera Project](https://labombo.rf.gd)
+## 🌐 Website  
+**Página oficial:**  
+👉 https://labombo.rf.gd
 
-Explore our project through a modern and interactive visual interface, containing detailed information about the team, technologies used, and system development progress.
+Explore tudo num visual direto: equipe, tecnologias, protótipo e progresso do sistema.
 
 ---
 
-## 📖 About the Project  
-The project uses a **Raspberry Pi Pico 2W** to control a **conveyor belt** and a **mini truck prototype**, simulating an **automated logistics process**.  
+## 📖 Sobre o Projeto  
+O projeto utiliza uma **Raspberry Pi Pico 2W** para controlar uma **esteira transportadora** e um **mini caminhão**, simulando um processo logístico automatizado real.
 
-### 🎯 Main Objective
-Develop a conveyor belt with a fully automated process, where the finalizer (cart) features an **infrared PIR sensor** that sends a signal to interrupt delivery on the belt. The cart must be capable of unloading its products automatically.
+### 🎯 Objetivo Principal  
+Criar uma esteira totalmente automatizada com um carrinho finalizador usando **sensor PIR** que interrompe a esteira no momento certo e realiza o **descarregamento automático** dos produtos.
 
-### 🔧 Key Features
-- **Automated Detection** → PIR sensor identifies when products reach the end point  
-- **Smart Interruption** → System stops belt movement for unloading process  
-- **Autonomous Unloading** → Cart automatically discharges its cargo  
-- **IoT Integration** → Raspberry Pi Pico 2W handles all communication and control  
-- **Real-time Monitoring** → Track the entire logistics process remotely  
+---
+
+## 🔧 Funcionalidades  
+- **Detecção automática** (sensor PIR)  
+- **Interrupção inteligente** da esteira  
+- **Descarregamento autônomo** do caminhão  
+- **Integração IoT** com a Raspberry Pi Pico 2W  
+- **Monitoramento em tempo real**  
 
 ---
 
 ## ⚙️ Tech Stack  
-- **Raspberry Pi Pico 2W**  
-- **Python/MicroPython**  
-- **PIR Infrared Sensors**  
-- **DC Motors & Servo Motors**  
-- **Custom Conveyor Belt System**  
-- **Mini Truck Prototype**  
-- **WiFi/Bluetooth Connectivity**  
+- Raspberry Pi Pico 2W  
+- MicroPython  
+- Sensor PIR HC-SR501  
+- Servo SG90  
+- Motor DC 6V  
+- Ponte H L298N  
+- Sistema de esteira customizado  
+- WiFi / Bluetooth  
 
 ---
 
-## 🚀 Getting Started  
-Clone the repository:  
+## 🧩 Lista de Hardware (Detalhada)  
+| Componente | Quantidade | Observações |
+|-----------|------------|-------------|
+| Raspberry Pi Pico 2W | 1 | Microcontrolador principal |
+| Sensor PIR HC-SR501 | 1 | Detecta presença no final da esteira |
+| Motor DC 6V | 1 | Movimenta a esteira |
+| Ponte H L298N | 1 | Controla o motor |
+| Servo SG90 | 1 | Sistema de descarga |
+| Mini Caminhão | 1 | Carrinho finalizador |
+| Fonte 5V externa | 1 | Alimentação dos atuadores |
+| Jumpers / Protoboard | — | Ligações gerais |
+| Estrutura da esteira | 1 | Parte física |
+
+---
+
+## 🔌 Pinagem Completa  
+| Componente | Pino do Componente | Pino no Pico | Função |
+|-----------|--------------------|--------------|--------|
+| PIR HC-SR501 | OUT | GP15 | Detecção |
+| PIR HC-SR501 | VCC / GND | 5V / GND | Alimentação |
+| Motor da Esteira (via L298N) | IN1 / IN2 | GP2 / GP3 | Controle |
+| Ponte H L298N | ENA | 5V | Ativação |
+| Ponte H L298N | VCC / GND | 12V / GND | Alimentação do motor |
+| Servo SG90 | Sinal | GP10 | Movimento |
+| Servo SG90 | VCC / GND | 5V / GND | Alimentação |
+| Pico 2W | WiFi | — | Comunicação IoT |
+
+---
+
+# 🍯 La Bombonera - Raspberry Pi Pico 2W
+
+Projeto de automação e IoT desenvolvido pelo grupo La Bombonera utilizando Raspberry Pi Pico 2W.
+
+## 🚀 Como Começar
+
+Clone o repositório:
+
 ```bash
 git clone https://github.com/miguel-zacharias/La-Bombonera-Repository.git
 cd La-Bombonera-Repository
 ```
 
-### Prerequisites
+## 📌 Pré-requisitos
+
 - Raspberry Pi Pico 2W
-- MicroPython firmware
-- Required sensors and motors (see hardware list)
-- WiFi network for connectivity
+- Firmware MicroPython instalado
+- Motor DC, L298N, Servo SG90, PIR HC-SR501
+- Rede WiFi disponível
+- Cabo micro-USB
+- Fonte 5V externa para atuadores
 
-### Installation
-1. Flash MicroPython to your Raspberry Pi Pico 2W
-2. Upload the project files to the microcontroller
-3. Connect hardware components according to wiring diagram
-4. Configure network settings in `config.py`
-5. Run the main script
+## 🛠️ Instalação
 
----
+1. Instale MicroPython na Pico 2W
+2. Suba os arquivos do projeto para o microcontrolador
+3. Monte todo o hardware seguindo a tabela de pinagem
+4. Edite o arquivo `config.py` com suas credenciais WiFi
+5. Execute o arquivo principal utilizando Thonny ou outro IDE
 
-## 👥 Team Members
-- **Agnaldo** - Backend Development
-- **Augusto** - UI/UX Design  
-- **Italo** - Hardware Engineering
-- **Miguel Z.** - Full Stack Development
+## 👥 Membros da Equipe
 
-Visit our [team page](https://labomba.rf.gd) to learn more about each member.
+- **Agnaldo** – Backend
+- **Augusto** – UI/UX
+- **Italo** – Hardware
+- **Miguel Z.** – Full Stack
 
----
+Mais informações na página da equipe: [labombo.rf.gd](https://labombo.rf.gd)
 
-## 📈 Project Status
-- ✅ Hardware design completed
-- ✅ Basic sensor integration
-- 🔄 PIR sensor calibration in progress
-- 🔄 Cart unloading mechanism development
-- ⏳ WiFi communication implementation
-- ⏳ Web interface development
+## 📈 Status do Projeto
 
----
+- ✅ Estrutura física montada
+- ✅ Sensores integrados
+- 🔄 Calibração do PIR
+- 🔄 Mecanismo de descarga do caminhão
+- ⏳ Comunicação WiFi
+- ⏳ Interface Web
 
-## 🤝 Contributing
-We welcome contributions! Please feel free to submit issues, fork the repository, and create pull requests.
+## 🤝 Contribuindo
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request
+1. Faça um fork
+2. Crie uma branch (`git checkout -b feature/NovaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona XYZ'`)
+4. Push na sua branch (`git push origin feature/NovaFeature`)
+5. Abra um Pull Request
 
----
+## 📝 Licença
 
-## 📝 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT — veja o arquivo [LICENSE](LICENSE).
 
----
+## 📞 Contato
 
-## 📞 Contact
-- **Project Website:** [La Bombonera](https://labombo.rf.gd)
-- **Repository:** [GitHub](https://github.com/miguel-zacharias/La-Bombonera-Repository)
+Entre em contato através da nossa [página da equipe](https://labombo.rf.gd) ou abra uma issue neste repositório.
 
 ---
 
-**Made with ❤️ by La Bombonera Team**
+<div align="center">
+  Feito com ❤️ pelo time La Bombonera
+</div>
+
+GitHub: https://github.com/miguel-zacharias/La-Bombonera-Repository
